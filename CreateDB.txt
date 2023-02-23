@@ -49,3 +49,34 @@ CREATE TABLE orderLine (
   FOREIGN KEY (OrderID)
   REFERENCES orders(OrderID)
  );
+
+/* Fill database with values. */
+
+INSERT INTO products (Title, CategoryID, Color, Price)
+VALUES ('Hoodie - ash',1,'grey', 899 ),
+('Hoodie Fire',1,'red', 899 ), 
+('Hoodie Green',1,'green', 899 ),
+('Hoodie Ocean',1,'blue', 899 ),
+('Hoodie Purple',1,'purple', 899 ),
+('Sinus Cap Blue',5,'blue', 499 ),
+('Sinus Cap Green ',5,'green', 499 ), 
+('Sinus Cap Purple',5,'purple', 499 ),
+('Sinus Cap Red',5,'red', 499 ),
+('Sinus Skateboard Eagle',3,'multicolor', 1899 ),
+('Sinus Skateboard Fire',3,'multicolor', 1399 ),
+('Sinus Skateboard Gretasfury',3,'multicolor', 1599 ),
+('Sinus Skateboard Ink',3,'multicolor', 1399 ),
+('Sinus Skateboard Logo',3,'multicolor', 1499 ),
+('Sinus Skateboard Skateboard Northern Lights',3,'green', 1699 ),
+('Sinus Skateboard Plastic',3,'multicolor', 1699 ),
+('Sinus Skateboard Polar',3,'black', 1599 ),
+('Sinus Skateboard Purple',3,'purple', 1399 ),
+('Sinus Skateboard Yellow',3,'yellow', 1399 ),
+('Sinus T-shirt Blue',2,'blue', 399 ),
+('Sinus T-shirt Grey',2,'grey', 399 ),
+('Sinus T-shirt Pink',2,'pink', 399 ),
+('Sinus T-shirt Purple',2,'purple', 399 ),
+('Sinus T-shirt Yellow',2,'yellow', 399 ),
+('Sinus Wheel Rocket',4,'red', 299 ),
+('Sinus Wheel Spinner',4,'white', 299 ),
+('Sinus Wheel Wave',4,'black', 299 );

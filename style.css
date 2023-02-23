@@ -10,7 +10,7 @@
 
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 15em 70em 10em;
+  grid-template-rows: 23em 70em 10em;
   grid-template-areas:
   "header"
   "main"
@@ -19,16 +19,72 @@
 }
 
 .header{
-  background-color: green;
+  background-color: rgb(255, 255, 255);
   grid-area: header;
+  display: grid;
 }
 
 .main{
-  background-color: aqua;
+  background-color: rgb(192, 187, 187);
   grid-area: main;
 }
 
 .footer{
-  background-color: gray;
+  background-color: rgb(117, 123, 124);
   grid-area: footer;
+}
+
+.logoHeader
+{
+  height: 15em;
+}
+
+.search
+{
+position: absolute;
+height: 2em;
+width: 30em;
+justify-self: center;
+align-self: center;
+margin-left: 4em;
+display: flex;
+margin-left: 25em;
+margin-bottom: 5em ;
+}
+
+.searchBar
+{
+height: 2em;
+width: 30em;
+}
+
+.searchBtn
+{
+  height: 2.5em;
+  width: 3em;
+  border: none;
+  background-color: rgb(225, 225, 225);
+  border-radius: 4px;border: 1px solid black;
+}
+
+.menu
+{
+justify-self: center;
+}
+
+ul li{
+  display: inline;
+  margin-left: 6em;
+  font-size: 20px;
+  font-weight: 600;
+  padding-bottom: 5px;
+  bottom: 5px;
+}
+
+ul li:hover
+{
+text-decoration: underline;
+text-underline-position: below;
+text-underline-offset: 8px;
+cursor: pointer;
 }

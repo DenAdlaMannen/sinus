@@ -33,7 +33,7 @@ CREATE TABLE products (
   CategoryID int NOT NULL,
   Color varchar(100) NOT NULL,
   Price int NOT NULL,
-  Image blob,
+  Image longblob,
   FOREIGN KEY (CategoryID)
   REFERENCES category(CategoryID)
 );
@@ -52,8 +52,16 @@ CREATE TABLE orderLine (
 
 /* Fill database with values. */
 
+INSERT INTO category (CategoryName)
+VALUE ('Hoodies'),
+('T-shirts'),
+('Skateboards'),
+('Wheels'),
+('Caps');
+
+
 INSERT INTO products (Title, CategoryID, Color, Price)
-VALUES ('Hoodie - ash',1,'grey', 899 ),
+VALUES ('Hoodie Ash',1,'grey', 899 ),
 ('Hoodie Fire',1,'red', 899 ), 
 ('Hoodie Green',1,'green', 899 ),
 ('Hoodie Ocean',1,'blue', 899 ),
@@ -80,3 +88,8 @@ VALUES ('Hoodie - ash',1,'grey', 899 ),
 ('Sinus Wheel Rocket',4,'red', 299 ),
 ('Sinus Wheel Spinner',4,'white', 299 ),
 ('Sinus Wheel Wave',4,'black', 299 );
+
+UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\hoodie-ash.png')
+WHERE ProductID = 1;
+UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\hoodie-ash.png')
+WHERE ProductID = 2;

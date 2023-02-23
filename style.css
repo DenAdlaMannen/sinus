@@ -91,9 +91,20 @@ cursor: pointer;
 }
 
 .cart{
-  margin-left: 50em;
-  margin-top: -2.8em;
+  margin-top: -12em;
   position: absolute;
-  height: 3em;
-  width: 5em;
+  height: 4em;
+  width: 7em;
+  background-color: white;
+  border: none;
+}
+
+.cartBtn{
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  font-size: 60px;
+  font-weight: 500;
+  cursor: pointer;
+
 }

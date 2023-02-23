@@ -7,19 +7,35 @@
           <input name="search" placeholder="Search Product" type="text" class="searchBar">
           <input type="submit" value="&#128269;" class="searchBtn">
         </form>
-        <button class="cart"><a>CART</a></button>
+        <button class="cart"><a href="" class="cartBtn">&#128722;</a></button>
       </div>
       <div class="menu">
 
-      <form action="/action_page.php">
-  <label for="cars">Choose a car:</label>
+
+      <!-- TAKE AWAY EVERY SELECT THAT YOU DO NOT WANT TO USE, EACH SELECT GIVES YOU ONE MORE THING TO FILTER BY -->
+      <!-- NOTE THAT THIS FORM IS NOT DONE, IT IS ONLY A SUGGESTION -->
+      <form action="menu.php" method="POST">
+  <label for="cars">Choose filters :</label>
   <select id="cars" name="cars">
-    <option value="volvo">Volvo</option>
-    <option value="saab">Saab</option>
-    <option value="fiat">Fiat</option>
-    <option value="audi">Audi</option>
+    <option value="volvo">T-shirts</option>
+    <option value="saab">Hoodies</option>
+    <option value="fiat">Skateboards</option>
+    <option value="fiat">Caps</option>
+    <option value="fiat">Wheels</option>
+    <option value="None">None</option>
   </select>
-  <input type="submit">
+  <select id="cars" name="cars">
+    <option value="volvo">Green</option>
+    <option value="saab">Purple</option>
+    <option value="fiat">Blue</option>
+    <option value="None">Orange</option>
+  </select>
+  <select id="cars" name="cars">
+    <option value="volvo">Price from low to high</option>
+    <option value="saab">Price from high to low</option>
+    <option value="None">Recommended</option>
+  </select>
+<input name="btn" type="submit" value="Filter">
 </form>
         <!-- <ul>
           <li class="menuBtn">T-shirts</li>
@@ -28,7 +44,6 @@
           <li class="menuBtn">Wheels</li>
           <li class="menuBtn">Caps</li>
         </ul> -->
-
 
         
       </div>

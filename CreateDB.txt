@@ -1,0 +1,51 @@
+CREATE DATABASE IF NOT EXISTS sinus;
+
+
+CREATE TABLE customers (
+  CustomerID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  Firstname varchar(100) NOT NULL,
+  Lastname varchar(100) NOT NULL,
+  Country varchar(100) NOT NULL,
+  City varchar(100) NOT NULL,
+  Zipcode int NOT NULL,
+  Street varchar(100) NOT NULL,
+  Phone varchar(100) NOT NULL,
+  EmailAdress varchar(100) NOT NULL
+);
+
+
+CREATE TABLE orders (
+  OrderID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  CustomerID int NOT NULL,
+  OrderDate Date NOT NULL,
+  FOREIGN KEY (CustomerID)
+  REFERENCES customers(CustomerID)
+);
+
+CREATE TABLE category (
+  CategoryID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  CategoryName varchar(100) NOT NULL
+);
+
+CREATE TABLE products (
+  ProductID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  Title varchar(100) NOT NULL,
+  CategoryID int NOT NULL,
+  Color varchar(100) NOT NULL,
+  Price int NOT NULL,
+  Image blob,
+  FOREIGN KEY (CategoryID)
+  REFERENCES category(CategoryID)
+);
+
+CREATE TABLE orderLine (
+  OrderLineID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  ProductID int NOT NULL,
+  OrderID int NOT NULL,
+  Quantity int NOT NULL,
+  TotalPrice int NOT NULL,
+  FOREIGN KEY (ProductID)
+  REFERENCES products(ProductID),
+  FOREIGN KEY (OrderID)
+  REFERENCES orders(OrderID)
+ );

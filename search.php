@@ -7,13 +7,17 @@
       $conn = Connection::Connection();
       
       if($conn){
-        echo "connected!";
+        
+        $items = $_POST["search"];
+        $query = "select * from products where Title Like ?;";
+        $run = $mysqli->prepare($conn, $query);
+
+        if($run == TRUE)
+        {
+
+        }
+
       }
     }
 
     echo "You did not search!";
-
-  
-
-  
-

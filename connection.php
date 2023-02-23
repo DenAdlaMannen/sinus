@@ -10,7 +10,13 @@ Class Connection
 
   $conn = new mysqli($serverHost, $dbHost, $password ,$dbName);
 
-  return $conn;
-
+  // Check connection
+  if ($conn->connect_error) {
+    return die("Connection failed: " . $conn->connect_error);
+  }
+  else
+  {
+    return $conn;
+  }
   }
 }

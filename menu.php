@@ -7,7 +7,7 @@ include_once 'search.php';
         <a href="index.php"><img src="sinusmaterial/sinus assets/logo/sinus-logo-landscape - large.png" class="logoHeader"></a>
       </div>
       <div class="search">
-        <form action="">
+        <form action="index.php" method="POST">
           <input name="search" placeholder="Search Product" type="text" class="searchBar">
           <input type="submit" value="&#128269;" class="searchBtn">
         </form>

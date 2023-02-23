@@ -1,3 +1,5 @@
+<?php include 'connection.php'?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +21,19 @@
 
 
     <!-- MAIN START -->
-    <div class="main"></div>
+    <div class="main">
+
+    <?php
+
+    //CHECK IF THERE IS A SEARCH
+    if(isset($_POST["search"]))
+    {
+      require 'search.php';
+    }
+
+    ?>
+
+    </div>
 
     <!-- FOOTER START -->
     <div class="footer"></div>

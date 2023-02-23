@@ -1,0 +1,34 @@
+*{
+  margin: 0px;
+}
+
+.container
+{
+  height: 100vh;
+  width: 100%;
+  background: red;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 15em 70em 10em;
+  grid-template-areas:
+  "header"
+  "main"
+  "footer"
+  ;
+}
+
+.header{
+  background-color: green;
+  grid-area: header;
+}
+
+.main{
+  background-color: aqua;
+  grid-area: main;
+}
+
+.footer{
+  background-color: gray;
+  grid-area: footer;
+}

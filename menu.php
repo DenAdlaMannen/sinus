@@ -1,3 +1,7 @@
+<?php
+include_once 'search.php';
+?>
+
 <div class="header">
       <div class="image">
         <a href="index.php"><img src="sinusmaterial/sinus assets/logo/sinus-logo-landscape - large.png" class="logoHeader"></a>

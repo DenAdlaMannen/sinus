@@ -24,7 +24,7 @@
 
 <!-- MAIN START -->
 <div class="main">
-    
+
 <?php if ($_POST['id'] != null) {
 ViewProduct($_POST['id']); ?>
 <?php }  
@@ -35,7 +35,7 @@ ViewProduct($_POST['id']); ?>
         $conn = Connection::Connection();
 
         /* create a prepared statement */
-        $stmt = $conn->prepare("SELECT Products.Title, Products.Color, Products.Price, category.CategoryName 
+        $stmt = $conn->prepare("SELECT Products.Title, Products.Color, Products.Price, Products.Image, category.CategoryName 
                                 FROM Products
                                 INNER JOIN category
                                 ON Products.CategoryID = category.CategoryID

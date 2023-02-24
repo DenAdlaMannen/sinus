@@ -8,7 +8,7 @@ Class Products
   public $price;
   public $image;
 
-  function __construct($title, $categoryId, $color, $price, $imagePath)
+  function __construct($title, $categoryId, $color, $price, $image)
   {
     $this->title = $title;
     $this->categoryId = $categoryId;

@@ -1,6 +1,6 @@
-<?php require 'connection.php'?>
-<?php require 'cart.php'?>
-<?php session_start(); ?>
+<?php require 'connection.php';
+session_destroy();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +43,7 @@ ViewProduct($_POST['id']); ?>
         $conn = Connection::Connection();
 
         /* create a prepared statement */
-        $stmt = $conn->prepare("SELECT Products.Title, Products.Color, Products.Price, Products.Image, category.CategoryName 
+        $stmt = $conn->prepare("SELECT Products.ProductID, Products.Title, Products.Color, Products.Price, Products.Image, category.CategoryName 
                                 FROM Products
                                 INNER JOIN category
                                 ON Products.CategoryID = category.CategoryID
@@ -59,23 +59,17 @@ ViewProduct($_POST['id']); ?>
 
         while($row = $result->fetch_assoc()) { ?>
         <div class="productView">
-        <form method="POST"> 
-                <input type="submit" class ="cartForm" name="addtocart" value="Add to cart" >
-            </form>
-            <?php 
-                if(isset($_POST['addtocart'])) {
-                    if(isset($_POST['id'])) {
-                        AddToCart($cartId);
-                    }
-                    else { echo "Could not be added!"; }
-                } 
-             ?> 
+        
              <h1><?php echo $row['Title'];?></h1>
             <hr>
             <h4>Color: <?php echo $row['Color'];?></h4>
             <h4>Price: <?php echo $row['Price'];?></h4>
             <h4>Category: <?php echo $row['CategoryName'];?></h4>
             <img src="sinusmaterial/sinus assets/products/<?php echo $row["Image"]?>" class="card-img-full" alt="...">
+            <form method="POST" action="confirmCart.php"> 
+                <input type="submit" class ="cartForm" value="Add to cart" >
+                <input type="hidden" name="id" value="<?php echo $row["ProductID"]; ?>"/>
+            </form>
         </div>
 <?php      }
     } 
@@ -83,22 +77,8 @@ ViewProduct($_POST['id']); ?>
 <div> 
 </div>
 </div>
-
     <!-- FOOTER START -->
-    <div class="footer">
-    <?php var_dump($_SESSION['activeCart']); ?>
-        <hr>
-        <form method="POST"> 
-        <input type="submit" name="viewcart" value="View Cart">
-        </form>
-
-<?php 
-if(isset($_POST['viewcart'])) {
-   ViewCart();
-}
-?>
-    </div>
-
+    <div class="footer"></div>
   </div>
 </body>
 </html>

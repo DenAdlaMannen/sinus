@@ -96,3 +96,13 @@ justify-self: center;
   cursor: pointer;
 
 }
+
+.productFlexBox {
+  display: flex;
+  justify-content: center;
+flex-flow: row-reverse wrap;
+} 
+
+.card {
+  margin: 2em;
+}

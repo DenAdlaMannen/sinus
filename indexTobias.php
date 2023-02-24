@@ -14,14 +14,11 @@
 .productFlexBox {
     display: flex;
     justify-content: center;
-    display: flex;
   flex-flow: row-reverse wrap;
 } 
 .card {
     margin: 2em;
 }
-
-
 </style>
 
 </head>
@@ -52,19 +49,14 @@ foreach($productList as $product)
             <hr>
             <h6 class="card-title">Color:<?php echo $product["color"];?></h6>
             <h6 class="card-title"><?php echo $product["price"]; ?> kr</h6>
-            <!--  -->
             <form method="POST" action="productInfo.php"> 
-                <input type="submit" name="Details">
-                <input type="hidden" name="id" value="<?php echo $product['ProductID']; ?>"/>
+                <input type="submit" value="Details" >
+                <input type="hidden" name="id" value="<?php echo $product["ProductID"]; ?>"/>
             </form>
         </div>
     </div>      
 <?php } ?>
   
-<form>
-  <input type="hidden" name="id" value="<?php echo $product['id']; ?>"/>
-  <button type="submit" action="productInfo.php" value="viewProduct" class="btn btn-primary">Submit</button>
-</form>
 
 
 <!-- Query-method for fetching all products -->
@@ -72,7 +64,7 @@ foreach($productList as $product)
     function SelectProducts() {
         $conn = Connection::Connection();
 
-        $sql = "SELECT title, color, price, image FROM Products";
+        $sql = "SELECT ProductID, title, color, price FROM Products";
         $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {

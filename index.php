@@ -1,4 +1,5 @@
 <?php include 'connection.php'?>
+<?php require 'products.php'?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,6 +36,29 @@
     {
       require 'search.php';
     }
+
+ else {
+$productList = SelectProducts(); 
+foreach($productList as $product)  
+  {  
+    ?> 
+    <div class="card" style="width: 18rem;">
+        <img src="sinusmaterial/sinus assets/products/hoodie-fire.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h4 class="card-title"><?php echo $product["title"]; ?> </h4>
+            <hr>
+            <h6 class="card-title">Color:<?php echo $product["color"];?></h6>
+            <h6 class="card-title"><?php echo $product["price"]; ?> kr</h6>
+            <form method="POST" action="productInfo.php"> 
+                <input type="submit" value="Details" >
+                <input type="hidden" name="id" value="<?php echo $product["ProductID"]; ?>"/>
+            </form>
+        </div>
+    </div>      
+<?php } 
+
+}
+?>
 
     ?>
     </div>

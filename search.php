@@ -24,18 +24,8 @@
        foreach ($users as $row) 
         
         {
-          // echo $row['Title'] . "<br>" . $row['Color'] . "<br>" .$row['Price'];
-          // echo' <img src="data:image/png;base64,'.base64_encode($row['Image']).'" >';
-          // echo "<br>";
-      
 
       ?>
-
-      
-    
-
-
-
         <style> 
         .productFlexBox {
             display: flex;
@@ -48,7 +38,6 @@
             border: none;
         }
         </style>
-
 
       <div class="card" style="width: 18rem;">
         <img src="sinusmaterial/sinus assets/products/hoodie-fire.png" class="card-img-top" alt="...">

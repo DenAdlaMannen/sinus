@@ -50,6 +50,13 @@ CREATE TABLE orderLine (
   REFERENCES orders(OrderID)
  );
 
+INSERT INTO category (CategoryName)
+VALUE ('Hoodies'),
+('T-shirts'),
+('Skateboards'),
+('Wheels'),
+('Caps');
+
 /* Fill database with values. */
 INSERT INTO `products` (`ProductID`, `Title`, `CategoryID`, `Color`, `Price`, `Image`) VALUES
 (1, 'Hoodie Ash', 1, 'grey', 899, 'hoodie-ash.png'),

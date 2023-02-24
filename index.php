@@ -43,7 +43,7 @@ foreach($productList as $product)
   {  
     ?> 
     <div class="card" style="width: 18rem;">
-        <img src="sinusmaterial/sinus assets/products/hoodie-fire.png" class="card-img-top" alt="...">
+        <img src="sinusmaterial/sinus assets/products/<?php echo $product['Image']?>" class="card-img-top" alt="...">
         <div class="card-body">
             <h4 class="card-title"><?php echo $product["title"]; ?> </h4>
             <hr>

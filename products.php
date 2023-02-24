@@ -20,7 +20,7 @@ Class Products
     function SelectProducts() {
         $conn = Connection::Connection();
 
-        $sql = "SELECT ProductID, title, color, price FROM Products";
+        $sql = "SELECT ProductID, title, color, price, image FROM Products";
         $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {

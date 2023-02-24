@@ -40,7 +40,7 @@
         </style>
 
       <div class="card" style="width: 18rem;">
-        <img src="sinusmaterial/sinus assets/products/hoodie-fire.png" class="card-img-top" alt="...">
+        <img src="sinusmaterial/sinus assets/products/<?php echo $row['Image']?>" class="card-img-top" alt="...">
         <div class="card-body">
             <h4 class="card-title"><?php echo $row["Title"]; ?> </h4>
             <hr>

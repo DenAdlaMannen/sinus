@@ -1,5 +1,5 @@
 <?php
-include_once 'search.php';
+
 ?>
 
 <div class="header">

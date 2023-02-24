@@ -9,7 +9,7 @@
 
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 23em 70em 10em;
+  grid-template-rows: 23em auto 10em;
   grid-template-areas:
   "header"
   "main"
@@ -24,7 +24,7 @@
 }
 
 .main{
-  background-color: rgb(192, 187, 187);
+  background-color: rgb(255, 255, 255);
   grid-area: main;
 }
 
@@ -33,9 +33,16 @@
   grid-area: footer;
 }
 
+.image{
+  width: 100%;
+  margin: 0px;
+}
+
 .logoHeader
 {
   height: 15em;
+  align-self: flex-start;
+  justify-self: flex-start;
 }
 
 .search
@@ -45,9 +52,8 @@ height: 2em;
 width: 30em;
 justify-self: center;
 align-self: center;
-margin-left: 4em;
 display: flex;
-margin-left: 25em;
+margin-left: 55em;
 margin-bottom: 5em ;
 display: inline;
 }
@@ -55,7 +61,7 @@ display: inline;
 .searchBar
 {
 height: 2em;
-width: 30em;
+width: 15em;
 }
 
 .searchBtn
@@ -72,25 +78,8 @@ width: 30em;
 justify-self: center;
 }
 
-ul li{
-  display: inline;
-  margin-left: 6em;
-  font-size: 20px;
-  font-weight: 500;
-  padding-bottom: 5px;
-  bottom: 5px;
-}
-
-ul li:hover
-{
-text-decoration: underline;
-text-underline-position: below;
-text-underline-offset: 8px;
-cursor: pointer;
-}
-
 .cart{
-  margin-top: -12em;
+  margin-top: -10em;
   position: absolute;
   height: 4em;
   width: 7em;

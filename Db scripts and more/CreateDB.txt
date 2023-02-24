@@ -33,7 +33,7 @@ CREATE TABLE products (
   CategoryID int NOT NULL,
   Color varchar(100) NOT NULL,
   Price int NOT NULL,
-  Image longblob,
+  Image varchar(100),
   FOREIGN KEY (CategoryID)
   REFERENCES category(CategoryID)
 );
@@ -51,96 +51,31 @@ CREATE TABLE orderLine (
  );
 
 /* Fill database with values. */
-
-INSERT INTO category (CategoryName)
-VALUE ('Hoodies'),
-('T-shirts'),
-('Skateboards'),
-('Wheels'),
-('Caps');
-
-
-INSERT INTO products (Title, CategoryID, Color, Price)
-VALUES ('Hoodie Ash',1,'grey', 899 ),
-('Hoodie Fire',1,'red', 899 ), 
-('Hoodie Green',1,'green', 899 ),
-('Hoodie Ocean',1,'blue', 899 ),
-('Hoodie Purple',1,'purple', 899 ),
-('Sinus Cap Blue',5,'blue', 499 ),
-('Sinus Cap Green ',5,'green', 499 ), 
-('Sinus Cap Purple',5,'purple', 499 ),
-('Sinus Cap Red',5,'red', 499 ),
-('Sinus Skateboard Eagle',3,'multicolor', 1899 ),
-('Sinus Skateboard Fire',3,'multicolor', 1399 ),
-('Sinus Skateboard Gretasfury',3,'multicolor', 1599 ),
-('Sinus Skateboard Ink',3,'multicolor', 1399 ),
-('Sinus Skateboard Logo',3,'multicolor', 1499 ),
-('Sinus Skateboard Skateboard Northern Lights',3,'green', 1699 ),
-('Sinus Skateboard Plastic',3,'multicolor', 1699 ),
-('Sinus Skateboard Polar',3,'black', 1599 ),
-('Sinus Skateboard Purple',3,'purple', 1399 ),
-('Sinus Skateboard Yellow',3,'yellow', 1399 ),
-('Sinus T-shirt Blue',2,'blue', 399 ),
-('Sinus T-shirt Grey',2,'grey', 399 ),
-('Sinus T-shirt Pink',2,'pink', 399 ),
-('Sinus T-shirt Purple',2,'purple', 399 ),
-('Sinus T-shirt Yellow',2,'yellow', 399 ),
-('Sinus Wheel Rocket',4,'red', 299 ),
-('Sinus Wheel Spinner',4,'white', 299 ),
-('Sinus Wheel Wave',4,'black', 299 );
-
-UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\hoodie-ash.png')
-WHERE ProductID = 1;
-UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\hoodie-fire.png')
-WHERE ProductID = 2;
-UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\hoodie-green.png')
-WHERE ProductID = 3;
-UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\hoodie-ocean.png')
-WHERE ProductID = 4;
-UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\hoodie-purple.png')
-WHERE ProductID = 5;
-UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\sinus-cap-blue.png')
-WHERE ProductID = 6;
-UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\sinus-cap-green.png')
-WHERE ProductID = 7;
-UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\sinus-cap-purple.png')
-WHERE ProductID = 8;
-UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\sinus-cap-red.png')
-WHERE ProductID = 9;
-UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\sinus-skateboard-eagle.png')
-WHERE ProductID = 10;
-UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\sinus-skateboard-fire.png')
-WHERE ProductID = 11;
-UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\sinus-skateboard-gretasfury.png')
-WHERE ProductID = 12;
-UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\sinus-skateboard-ink.png')
-WHERE ProductID = 13;
-UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\sinus-skateboard-logo.png')
-WHERE ProductID = 14;
-UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\sinus-skateboard-northern_lights.png')
-WHERE ProductID = 15;
-UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\sinus-skateboard-plastic.png')
-WHERE ProductID = 16;
-UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\sinus-skateboard-polar.png')
-WHERE ProductID = 17;
-UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\sinus-skateboard-purple.png')
-WHERE ProductID = 18;
-UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\sinus-skateboard-yellow.png')
-WHERE ProductID = 19;
-UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\sinus-tshirt-blue.png')
-WHERE ProductID = 20;
-UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\sinus-tshirt-grey.png')
-WHERE ProductID = 21;
-UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\sinus-tshirt-pink.png')
-WHERE ProductID = 22;
-UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\sinus-tshirt-purple.png')
-WHERE ProductID = 23;
-UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\sinus-tshirt-yellow.png')
-WHERE ProductID = 24;
-UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\sinus-wheel-rocket.png')
-WHERE ProductID = 25;
-UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\sinus-wheel-spinner.png')
-WHERE ProductID = 26;
-UPDATE products SET image = LOAD_FILE('C:\\xampp\\htdocs\\sinus\\sinus\\sinusmaterial\\sinus assets\\products\\sinus-wheel-wave.png')
-WHERE ProductID = 27;
-
+INSERT INTO `products` (`ProductID`, `Title`, `CategoryID`, `Color`, `Price`, `Image`) VALUES
+(1, 'Hoodie Ash', 1, 'grey', 899, 'hoodie-ash.png'),
+(2, 'Hoodie Fire', 1, 'red', 899, 'hoodie-fire.png'),
+(3, 'Hoodie Green', 1, 'green', 899, 'hoodie-green.png'),
+(4, 'Hoodie Ocean', 1, 'blue', 899, 'hoodie-ocean.png'),
+(5, 'Hoodie Purple', 1, 'purple', 899, 'hoodie-purple.png'),
+(6, 'Sinus Cap Blue', 5, 'blue', 499, 'sinus-cap-blue.png'),
+(7, 'Sinus Cap Green ', 5, 'green', 499, 'sinus-cap-green.png'),
+(8, 'Sinus Cap Purple', 5, 'purple', 499, 'sinus-cap-purple.png'),
+(9, 'Sinus Cap Red', 5, 'red', 499, 'sinus-cap-red.png'),
+(10, 'Sinus Skateboard Eagle', 3, 'multicolor', 1899, 'sinus-skateboard-eagle.png'),
+(11, 'Sinus Skateboard Fire', 3, 'multicolor', 1399, 'sinus-skateboard-fire.png'),
+(12, 'Sinus Skateboard Gretasfury', 3, 'multicolor', 1599, 'sinus-skateboard-gretasfury.png'),
+(13, 'Sinus Skateboard Ink', 3, 'multicolor', 1399, 'sinus-skateboard-ink.png'),
+(14, 'Sinus Skateboard Logo', 3, 'multicolor', 1499, 'sinus-skateboard-logo.png'),
+(15, 'Sinus Skateboard Skateboard Northern Lights', 3, 'green', 1699, 'sinus-skateboard-northern_lights.png'),
+(16, 'Sinus Skateboard Plastic', 3, 'multicolor', 1699, 'sinus-skateboard-plastic.png'),
+(17, 'Sinus Skateboard Polar', 3, 'black', 1599, 'sinus-skateboard-polar.png'),
+(18, 'Sinus Skateboard Purple', 3, 'purple', 1399, 'sinus-skateboard-purple.png'),
+(19, 'Sinus Skateboard Yellow', 3, 'yellow', 1399, 'sinus-skateboard-yellow.png'),
+(20, 'Sinus T-shirt Blue', 2, 'blue', 399, 'sinus-tshirt-blue.png'),
+(21, 'Sinus T-shirt Grey', 2, 'grey', 399, 'sinus-tshirt-grey.png'),
+(22, 'Sinus T-shirt Pink', 2, 'pink', 399, 'sinus-tshirt-pink.png'),
+(23, 'Sinus T-shirt Purple', 2, 'purple', 399, 'sinus-tshirt-purple.png'),
+(24, 'Sinus T-shirt Yellow', 2, 'yellow', 399, 'sinus-tshirt-yellow.png'),
+(25, 'Sinus Wheel Rocket', 4, 'red', 299, 'sinus-wheel-rocket.png'),
+(26, 'Sinus Wheel Spinner', 4, 'white', 299, 'sinus-wheel-spinner.png'),
+(27, 'Sinus Wheel Wave', 4, 'black', 299, 'sinus-wheel-wave.png');

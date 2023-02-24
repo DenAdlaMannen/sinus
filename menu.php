@@ -21,26 +21,29 @@
       <form action="index.php" method="POST">
   <label for="category">Choose filters :</label>
   <select id="category" name="category">
-    <option value="tshirt">T-shirts</option>
-    <option value="hoodie">Hoodies</option>
-    <option value="skateboard">Skateboards</option>
-    <option value="caps">Caps</option>
-    <option value="wheels">Wheels</option>
-    <option value="none">None</option>
+    <option value="2">T-shirts</option>
+    <option value="1">Hoodies</option>
+    <option value="3">Skateboards</option>
+    <option value="5">Caps</option>
+    <option value="4">Wheels</option>
+    <option value="6">None</option>
   </select>
-  <select id="color" name="color">
+  <br>
+  <input type="radio" id="html" name="color" value="green">
+<label for="html">Green</label><br>
+<input type="radio" id="css" name="color" value="purple">
+<label for="css">Purple</label><br>
+<input type="radio" id="javascript" name="color" value="fire">
+<label for="javascript">Red</label> 
+  <!-- <select id="color" name="color">
     <option value="green">Green</option>
     <option value="purple">Purple</option>
     <option value="blue">Blue</option>
     <option value="fire">Red</option>
     <option value="multicolor">Multicolor</option>
     <option value="none">None</option>
-  </select>
-  <select id="price" name="price">
-    <option value="low">Price from low to high</option>
-    <option value="high">Price from high to low</option>
-    <option value="None">None</option>
-  </select>
+  </select> -->
+  <br>
 <input name="btn" type="submit" value="Filter">
 </form>
         <!-- <ul>

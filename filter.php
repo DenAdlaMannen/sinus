@@ -36,6 +36,7 @@ function getCategoryQuery($category)
 }
 
 
+
 function filterByCategory()
 {
   function SelectProducts() {
@@ -56,12 +57,92 @@ $conn->close();
 } 
 }
 
-function runFilter($category)
+function getFilterQuery()
 {
-$query = getCategoryQuery($category);
-
-
-
+if(isset($_POST['color']) && isset($_POST['category']))
+{
+  $query = "SELECT ProductID, title, color, price, image 
+  FROM Products
+  WHERE CategoryID = ? AND
+  Color = ?;
+  ";
+}
+else if(isset($_POST['color']))
+{
+  $query = "SELECT ProductID, title, color, price, image 
+  FROM Products
+  WHERE color = ?;";
+}
+else if(isset($_POST['category']))
+{
+$query = "SELECT ProductID, title, color, price, image 
+FROM Products
+WHERE CategoryID = ?;";
 }
 
-runFilter($_POST['category']);
+return $query;
+}
+
+function runFilter()
+{
+    $conn = Connection::Connection();
+    $query = getFilterQuery();
+
+    $countQuestionMarks = substr_count($query, '?');
+
+    //CHECKS IF COLOR AND CATEGORY HAS BEEN SET
+    if(isset($_POST['color']) && isset($_POST['category']))
+    {
+
+      //Query
+      $query = "SELECT ProductID, title, color, price, image 
+      FROM Products
+      WHERE CategoryID = ? AND
+      Color = ?;
+      ";
+
+      //Prepare stmt
+      $stmt = $conn->prepare($query);
+      $stmt->bind_param("is", $_POST["category"], $_POST["color"]);
+      $stmt->execute();
+      $results = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); 
+
+      //Return results
+      return $results;
+    }
+    //OR IF ONLY COLOR HAS BEEN SET
+    else if (isset($_POST['color']))
+    {
+      //query
+      $query = "SELECT ProductID, title, color, price, image 
+      FROM Products
+      WHERE color = ?;";
+
+            //Prepare stmt
+            $stmt = $conn->prepare($query);
+            $stmt->bind_param("s", $_POST["color"]);
+            $stmt->execute();
+            $results = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); 
+      
+            //Return results
+            return $results;
+    }
+    //OR IF ONLY CATEGORY HAS BEEN SET
+    else if(isset($_POST['category']))
+    {
+            //query
+            $query = "SELECT ProductID, title, color, price, image 
+            FROM Products
+            WHERE color = ?;";
+      
+                  //Prepare stmt
+                  $stmt = $conn->prepare($query);
+                  $stmt->bind_param("i", $_POST["category"]);
+                  $stmt->execute();
+                  $results = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); 
+            
+                  //Return results
+                  return $results;
+    }
+
+}

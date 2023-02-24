@@ -6,15 +6,15 @@ Class Products
   public $categoryId;
   public $color;
   public $price;
-  public $imagePath;
+  public $image;
 
   function __construct($title, $categoryId, $color, $price, $imagePath)
   {
-    this.$title = $title;
-    this.$categoryId = $categoryId;
-    this.$color = $color;
-    this.$price = $price;
-    this.$imagePath = $imagePath;
+    $this->title = $title;
+    $this->categoryId = $categoryId;
+    $this->color = $color;
+    $this->price = $price;
+    $this->image = $image;
   }
 }
     function SelectProducts() {

@@ -1,5 +1,8 @@
 <?php include 'connection.php'?>
-<?php require 'products.php'?>
+<?php require 'products.php';
+
+session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,8 +39,11 @@
     {
       require 'search.php';
     }
-
- else {
+    else if(isset($_POST['category']) || isset($_POST['color']) || isset($_POST['price']))
+    {
+        require 'filter.php';
+    }
+  else {
 $productList = SelectProducts(); 
 foreach($productList as $product)  
   {  

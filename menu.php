@@ -18,26 +18,28 @@
 
       <!-- TAKE AWAY EVERY SELECT THAT YOU DO NOT WANT TO USE, EACH SELECT GIVES YOU ONE MORE THING TO FILTER BY -->
       <!-- NOTE THAT THIS FORM IS NOT DONE, IT IS ONLY A SUGGESTION -->
-      <form action="menu.php" method="POST">
-  <label for="cars">Choose filters :</label>
-  <select id="cars" name="cars">
-    <option value="volvo">T-shirts</option>
-    <option value="saab">Hoodies</option>
-    <option value="fiat">Skateboards</option>
-    <option value="fiat">Caps</option>
-    <option value="fiat">Wheels</option>
+      <form action="index.php" method="POST">
+  <label for="category">Choose filters :</label>
+  <select id="category" name="category">
+    <option value="tshirt">T-shirts</option>
+    <option value="hoodie">Hoodies</option>
+    <option value="skateboard">Skateboards</option>
+    <option value="caps">Caps</option>
+    <option value="wheels">Wheels</option>
+    <option value="none">None</option>
+  </select>
+  <select id="color" name="color">
+    <option value="green">Green</option>
+    <option value="purple">Purple</option>
+    <option value="blue">Blue</option>
+    <option value="fire">Red</option>
+    <option value="multicolor">Multicolor</option>
+    <option value="none">None</option>
+  </select>
+  <select id="price" name="price">
+    <option value="low">Price from low to high</option>
+    <option value="high">Price from high to low</option>
     <option value="None">None</option>
-  </select>
-  <select id="cars" name="cars">
-    <option value="volvo">Green</option>
-    <option value="saab">Purple</option>
-    <option value="fiat">Blue</option>
-    <option value="None">Orange</option>
-  </select>
-  <select id="cars" name="cars">
-    <option value="volvo">Price from low to high</option>
-    <option value="saab">Price from high to low</option>
-    <option value="None">Recommended</option>
   </select>
 <input name="btn" type="submit" value="Filter">
 </form>

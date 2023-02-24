@@ -19,7 +19,10 @@
 
         $users = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); 
         // var_dump($result);
-      
+      if (count($users) <1) {
+        echo "No results";
+      }
+      else{
 
        foreach ($users as $row) 
         
@@ -55,5 +58,6 @@
 
       </div>
 <?php
+        }
 }
 ?>

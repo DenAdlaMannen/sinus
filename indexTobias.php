@@ -1,5 +1,4 @@
 <?php require 'connection.php'?>
-header('Content-type: image/jpeg');
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,14 +11,17 @@ header('Content-type: image/jpeg');
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 <style> 
-/* .productFlexBox {
-    display: grid;
-} */
-
+.productFlexBox {
+    display: flex;
+    justify-content: center;
+    display: flex;
+  flex-flow: row-reverse wrap;
+} 
 .card {
-display:inline-block;
-margin: 4em;
+    margin: 2em;
 }
+
+
 </style>
 
 </head>
@@ -37,7 +39,7 @@ margin: 4em;
    
 <div class="productFlexBox"> 
 <?php 
-$productList = SelectProduct();?>  
+$productList = SelectProducts();?>  
 
 <?php 
 foreach($productList as $product)  
@@ -47,28 +49,27 @@ foreach($productList as $product)
         <img src="sinusmaterial/sinus assets/products/hoodie-fire.png" class="card-img-top" alt="...">
         <div class="card-body">
             <h4 class="card-title"><?php echo $product["title"]; ?> </h4>
-            <h5 class="card-title"><?php echo $product["color"]; ?> </h5>
-            <h6 class="card-title"><?php echo $product["price"]; ?> </h6>
-            <a href="#" class="btn btn-primary">Details</a>
+            <hr>
+            <h6 class="card-title">Color:<?php echo $product["color"];?></h6>
+            <h6 class="card-title"><?php echo $product["price"]; ?> kr</h6>
+            <!--  -->
+            <form method="POST" action="productInfo.php"> 
+                <input type="submit" name="Details">
+                <input type="hidden" name="id" value="<?php echo $product['ProductID']; ?>"/>
+            </form>
         </div>
     </div>      
+<?php } ?>
+  
+<form>
+  <input type="hidden" name="id" value="<?php echo $product['id']; ?>"/>
+  <button type="submit" action="productInfo.php" value="viewProduct" class="btn btn-primary">Submit</button>
+</form>
 
-   
 
-    <?php  
-    }  
-?>  
-
-<div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-</div>
+<!-- Query-method for fetching all products -->
 <?php 
-    function SelectProduct() {
+    function SelectProducts() {
         $conn = Connection::Connection();
 
         $sql = "SELECT title, color, price, image FROM Products";

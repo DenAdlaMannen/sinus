@@ -18,7 +18,7 @@ session_start();
 
 </head>
 <body>
-
+<?php require 'adminNav.php'?>
  <!-- CONTAINER START -->
   <div class="container">
 

@@ -106,3 +106,10 @@ flex-flow: row-reverse wrap;
 .card {
   margin: 2em;
 }
+
+.navbar-brand {
+  margin-right: 1em;
+  margin-left: 1em;
+  align-self: center;
+}
+

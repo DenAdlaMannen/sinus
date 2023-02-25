@@ -11,7 +11,8 @@
           <input name="search" placeholder="Search Product" type="text" class="searchBar">
           <input type="submit" value="&#128269;" class="searchBtn">
         </form>
-        <button class="cart"><a href="cart.php" class="cartBtn">&#128722;</a></button>
+
+          <button class="cart"><a href="cart.php" class="cartBtn">&#128722;</a></button>
       </div>
       <div class="menu">
 

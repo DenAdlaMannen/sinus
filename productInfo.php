@@ -1,5 +1,4 @@
 <?php require 'connection.php';
-session_destroy();
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +66,7 @@ ViewProduct($_POST['id']); ?>
             <h4>Category: <?php echo $row['CategoryName'];?></h4>
             <img src="sinusmaterial/sinus assets/products/<?php echo $row["Image"]?>" class="card-img-full" alt="...">
             <form method="POST" action="confirmCart.php"> 
-                <input type="submit" class ="cartForm" value="Add to cart" >
+                <input type="submit" class="btn btn-outline-secondary" value="Add to cart" >
                 <input type="hidden" name="id" value="<?php echo $row["ProductID"]; ?>"/>
             </form>
         </div>

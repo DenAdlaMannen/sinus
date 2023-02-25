@@ -56,7 +56,7 @@ foreach($productList as $product)
             <h6 class="card-title">Color:<?php echo $product["color"];?></h6>
             <h6 class="card-title"><?php echo $product["price"]; ?> kr</h6>
             <form method="POST" action="productInfo.php"> 
-                <input type="submit" value="Details" >
+                <input type="submit" class="btn btn-outline-secondary" value="Details" >
                 <input type="hidden" name="id" value="<?php echo $product["ProductID"]; ?>"/>
             </form>
         </div>

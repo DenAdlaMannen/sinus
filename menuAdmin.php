@@ -15,9 +15,13 @@
     <div class="card-body">
       <h1 class="display-4">Admin View</h1>
       <p class="card-text"><small class="text-muted">Click on logo to get back to customer view.</small></p>
-      <button type="button" class="btn btn-secondary btn-lg">View all products</button>
-        <button type="button" class="btn btn-secondary btn-lg">Add new product</button>
-        <button type="button" class="btn btn-secondary btn-lg">View all orders</button>
-        <button type="button" class="btn btn-secondary btn-lg">Search order</button>
+      <form method="post">
+        <input type="submit" name="showProducts" value="View all products" class="btn btn-secondary btn-lg">
+        <input type="submit" name="newProduct" value="Add new product" class="btn btn-secondary btn-lg">
+        <input type="submit" name="viewOrders" value="View all orders" class="btn btn-secondary btn-lg">
+        <input type="submit" name="searchOrder" value="Search order" class="btn btn-secondary btn-lg">
+      </form>
+
+        
     </div>
   </div>

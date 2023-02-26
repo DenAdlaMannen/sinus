@@ -19,7 +19,24 @@
 <?php require 'menuAdmin.php'?>
 </div>
 <div class="main">
-
+<?php
+if(isset($_POST["showProducts"]))
+{
+    include("admin.allproducts.php");
+}
+if(isset($_POST["newProduct"]))
+{
+    include("#");
+}
+if(isset($_POST["viewOrders"]))
+{
+    include("#");
+}
+if(isset($_POST["searchOrder"]))
+{
+    include("#");
+}
+?>
 </div>
 
 <div class="footer"></div>

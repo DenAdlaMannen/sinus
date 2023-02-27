@@ -21,11 +21,6 @@ require_once 'admin.functions.php'?>
 </head>
 <body>
 
-  <div>
-    <p>namn</p>
-    
-  </div>
-
     <table class="table">
   <thead class="thead-dark">
     <tr>

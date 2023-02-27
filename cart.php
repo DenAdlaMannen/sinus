@@ -82,8 +82,12 @@ else { ?>
 
 <div class="card" style="width: 18rem;">
   <div class="card-body">
-    <a href="checkout.php" class="btn btn-outline-secondary">Checkout</a>
+    <form method="POST" action="checkout.php">
+      <Input type="submit" name="emptycart" class="btn btn-outline-secondary" value="Checkout"/>
+      <input type="hidden" name="sessionCart" value="<?php echo $_SESSION['Cart']; ?>"/>
+    </form>  
   </div>
+
   <div class="card-body">
     <form method="POST" action="cart.php">
     <Input type="submit" name="emptycart" class="btn btn-outline-secondary" value="Empty cart"/>
@@ -117,3 +121,5 @@ if(isset($_POST["emptycart"]))
     session_destroy();
 }
 ?>
+
+

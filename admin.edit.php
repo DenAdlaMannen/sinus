@@ -149,5 +149,5 @@ $products = $_SESSION["product"];
                 UpdateCategoryID($_SESSION["productID"],$_POST["categoryID"]);
                }        
           ?>
-<a href="admin.allproducts.php" align="center" class="btn btn-primary">Return to all products</a><br><br>
-<a href="admin.edit.php" align="center" class="btn btn-primary">Relode page</a>
+<a href="indexAdmin.php" align="center" class="btn btn-secondary btn-lg">Return to Admin view</a><br><br>
+<a href="admin.edit.php" align="center" class="btn btn-secondary btn-lg">Relode page</a>

@@ -32,7 +32,7 @@ if (isset($_POST['submit'])){
 <?php }  
 $_SESSION["product"] = ProductByID($_SESSION["productID"]); 
 $products = $_SESSION["product"];
-var_dump($products);
+
 ?>
 
 <table class="table">

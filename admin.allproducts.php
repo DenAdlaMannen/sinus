@@ -15,7 +15,7 @@ require_once 'admin.functions.php'?>
 <style> 
     table { margin-top: 5em;}
     .card {border:none;}
-    .display-4 {margin:3em;}
+
 </style>
 </head>
 <body>

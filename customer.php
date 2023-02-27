@@ -75,6 +75,9 @@ public static function InsertCustomerDB ($conn, $newCustomer) //add new row to d
   $email = $newCustomer->email;
 
   $stmt->execute();
+  $customerID = $conn->insert_id;
+
+  return $customerID;
 
 }
 

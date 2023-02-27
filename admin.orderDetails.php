@@ -20,6 +20,19 @@ require_once 'admin.functions.php'?>
 </style>
 </head>
 <body>
+<?php $order= $_POST['submit']; 
+
+        $orderlines = SelectOrderlines($orderID);
+        $order = SelectOrderByOrderID($orderID);
+        $order->getCustomerID($orderID);
+        
+
+       
+?>
+<div>
+    <p>namn</p>
+  </div>
+
 
     <table class="table">
   <thead class="thead-dark">

@@ -27,15 +27,31 @@
     <option value="3">Skateboards</option>
     <option value="5">Caps</option>
     <option value="4">Wheels</option>
-    <option value="6">None</option>
+    <option value="0">None</option>
   </select>
   <br>
   <input type="radio" id="html" name="color" value="green">
 <label for="html">Green</label><br>
 <input type="radio" id="css" name="color" value="purple">
 <label for="css">Purple</label><br>
-<input type="radio" id="javascript" name="color" value="fire">
-<label for="javascript">Red</label> 
+<input type="radio" id="javascript" name="color" value="red">
+<label for="javascript">Red</label><br>
+<input type="radio" id="javascript" name="color" value="grey">
+<label for="javascript">Grey</label><br>
+<input type="radio" id="javascript" name="color" value="blue">
+<label for="javascript">Blue</label><br>
+<input type="radio" id="javascript" name="color" value="multicolor">
+<label for="javascript">Multicolor</label><br>
+<input type="radio" id="javascript" name="color" value="black">
+<label for="javascript">Black</label><br>
+<input type="radio" id="javascript" name="color" value="yellow">
+<label for="javascript">Yellow</label><br>
+<input type="radio" id="javascript" name="color" value="pink">
+<label for="javascript">Pink</label><br>
+<input type="radio" id="javascript" name="color" value="white">
+<label for="javascript">White</label><br>
+<input type="radio" id="javascript" name="color" value="0">
+<label for="javascript">None</label>  
   <!-- <select id="color" name="color">
     <option value="green">Green</option>
     <option value="purple">Purple</option>

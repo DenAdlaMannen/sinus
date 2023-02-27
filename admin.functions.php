@@ -1,19 +1,21 @@
 <?php
 
 include_once 'connection.php';
+include_once 'products.php';
 
 function ProductByID($productID) {
       $conn = Connection::Connection();
 
-      $sql = "SELECT productID, title, color, price, image, categoryID FROM Products
+      $sql = "SELECT title, color, price, image, categoryID FROM Products
       WHERE productID= $productID";
       $result = $conn->query($sql);
 
   if ($result->num_rows > 0) {
       while($row = $result->fetch_assoc()) {
-          $productList[] = $row;
+        $product = new products($row["title"], $row["categoryID"], $row["color"], $row["price"], $row["image"]);
+        return $product;
       }
-      return $productList;
+ 
   } else {
   echo "0 results";
   }
@@ -21,7 +23,8 @@ function ProductByID($productID) {
 }
 
 function UpdateTitle($productID, $title){
-
+echo $title;
+echo $productID;
     $conn = Connection::Connection();
     $stmt = $conn->prepare("UPDATE products 
     SET title = ?
@@ -83,19 +86,3 @@ function UpdateCategoryID($productID, $categoryID){
         $stmt->close();
         $conn->close();
 }
-function SelectProducts() {
-    $conn = Connection::Connection();
-
-    $sql = "SELECT productID, title, color, price, image, categoryID FROM Products";
-    $result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        $productList[] = $row;
-    }
-    return $productList;
-} else {
-echo "0 results";
-}
-$conn->close();
-} 

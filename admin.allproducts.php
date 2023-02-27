@@ -41,7 +41,7 @@ require_once 'admin.functions.php'?>
 
  foreach ($productList as $product){?>
     <tr>
-        <td><?= $product["productID"]?></td>
+        <td><?= $product["ProductID"]?></td>
         <td><?= $product["title"]?></td>
         <td><?= $product["color"]?></td>
         <td><?= $product["price"]?> kr</td>
@@ -49,7 +49,7 @@ require_once 'admin.functions.php'?>
         <td><?= $product["categoryID"]?></td>
         <td>
             <form action="admin.edit.php" method='post'>
-                <button name='submit' value=<?php echo $product['productID']; ?>>Edit</button>
+                <button name='submit' value=<?php echo $product['ProductID']; ?>>Edit</button>
             </form>
         </td>
         

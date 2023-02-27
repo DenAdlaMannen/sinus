@@ -1,5 +1,6 @@
 <?php session_start(); ?>
 <?php require_once 'connection.php';
+require_once 'products.php';
 require_once 'admin.functions.php'?>
 
 <!DOCTYPE html>
@@ -30,6 +31,8 @@ if (isset($_POST['submit'])){
   ?>
 <?php }  
 $_SESSION["product"] = ProductByID($_SESSION["productID"]); 
+$products = $_SESSION["product"];
+var_dump($products);
 ?>
 
 <table class="table">
@@ -51,7 +54,7 @@ $_SESSION["product"] = ProductByID($_SESSION["productID"]);
       <form action="admin.edit.php" method="post">
       <tr>
       <td>Titel: </td>
-      <td><?=$_SESSION["product"][0]["title"]?></td>
+      <td><?=$products->getTitle()?></td>
       <td><input type="text" name="title" value="<?php echo @$title;?>" placeholder="New title..."></td>
       <td>
               <button name='update' value="">Update</button>
@@ -68,8 +71,8 @@ $_SESSION["product"] = ProductByID($_SESSION["productID"]);
       <form action="admin.edit.php" method="post">
       <tr>
       <td>Color: </td>
-      <td><?= $_SESSION["product"][0]["color"]?></td>
-      <td><input type="text" name="color" value="<?php echo @$color;?>" placeholder="New color..."></td>
+      <td><?=$products->getColor()?></td>
+      <td><input type="text" name="color" value="" placeholder="New color..."></td>
       <td>
               <button name='update' value="">Update</button>
       </td>
@@ -83,8 +86,8 @@ $_SESSION["product"] = ProductByID($_SESSION["productID"]);
         <form action="admin.edit.php" method="post">
         <tr>
         <td>Price: </td>
-        <td><?= $_SESSION["product"][0]["price"]?></td>
-        <td><input type="text" name="price" placeholder="New price..."></td>
+        <td><?=$products->getPrice()?></td>
+        <td><input type="text" name="price"value="<?php echo @$price;?>" placeholder="New price..."></td>
         <td>
                 <button name='update' value="">Update</button>
         </td>
@@ -98,7 +101,7 @@ $_SESSION["product"] = ProductByID($_SESSION["productID"]);
         <form action="admin.edit.php" method="post">
         <tr>
         <td>Image: </td>
-        <td><?= $_SESSION["product"][0]["image"]?></td>
+        <td><?=$products->getImage()?></td>
         <td><input type="text" name="image" placeholder="New image..."></td>
         <td>
                 <button name='update' value="">Update</button>
@@ -113,7 +116,7 @@ $_SESSION["product"] = ProductByID($_SESSION["productID"]);
         <form action="admin.edit.php" method="post">
         <tr>
         <td>CategoryID: </td>
-        <td><?=$_SESSION["product"][0]["categoryID"]?></td>
+        <td><?=$products->getCategoryID()?></td>
         <td><input type="text" name="categoryID" placeholder="New categoryID..."></td>
         <td>
                 <button name='update' value="">Update</button>
@@ -126,6 +129,8 @@ $_SESSION["product"] = ProductByID($_SESSION["productID"]);
           if (isset($_POST["title"])){
             
                 UpdateTitle($_SESSION["productID"],$_POST["title"]);
+
+                echo $_SESSION["productID"];
               }
           if (isset($_POST["color"])){
             

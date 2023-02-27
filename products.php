@@ -16,11 +16,27 @@ Class Products
     $this->price = $price;
     $this->image = $image;
   }
+
+  public function getTitle() {
+    return $this->title;
+  }
+  public function getCategoryID() {
+    return $this->categoryId;
+  }
+  public function getColor() {
+    return $this->color;
+  }
+  public function getPrice() {
+    return $this->price;
+  }
+  public function getImage() {
+    return $this->image;
+  }
+
 }
     function SelectProducts() {
         $conn = Connection::Connection();
-
-        $sql = "SELECT ProductID, title, color, price, image FROM Products";
+        $sql = "SELECT ProductID, title, color, price, image, categoryID FROM Products";
         $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -32,5 +48,8 @@ Class Products
     echo "0 results";
     }
     $conn->close();
+
     } 
+   
+  
 ?>

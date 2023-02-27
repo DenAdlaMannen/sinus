@@ -3,6 +3,7 @@
 
 function runFilter()
 {
+    //OPEN CONNECTION
     $conn = Connection::Connection();
 
     //CHECKS IF COLOR AND CATEGORY HAS BEEN SET AND HAS A VALUE
@@ -21,7 +22,7 @@ function runFilter()
       $stmt->bind_param("is", $_POST["category"], $_POST["color"]);
       $stmt->execute();
       $results = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); 
-
+      
       //Return results
       return $results;
     }
@@ -60,6 +61,7 @@ function runFilter()
                   return $results;
     }
 
+    $conn->close();
 }
 
 function printProducts($results)
@@ -82,6 +84,8 @@ foreach ($results as $row) {
   
 
 ?>
+
+<!-- HTML CARD WITH VALUES FROM THE FOREACH -->
 <div class="card" style="width: 18rem;">
   <img src="sinusmaterial/sinus assets/products/<?php echo $row['image']?>" class="card-img-top" alt="...">
   <div class="card-body">

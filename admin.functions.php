@@ -5,23 +5,19 @@ include_once 'products.php';
 
 function SelectCustomerByID($customerID) {
     $conn = Connection::Connection();
-    $sql = "SELECT `CustomerID`, `Firstname`, `Lastname`, `Country`, `City`, `Zipcode`, `Street`, 
-    `Phone`, `EmailAdress` FROM `customers` WHERE  CustomerID = $customerID ;
-    $result = $conn->query($sql);
-
-if ($result->num_rows > 0) 
-    {
+      $sql = "SELECT firstname, lastname, country, city, zipcode, street, phone, email FROM customers where customerID = $customerID";
+      $result = $conn->query($sql);
+      if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
-        $customer = new customer($row["firstName"], $row["lastName"], $row["country"], $row["city"], 
-        $row["zipcode"], $row["street"], $row["phone"], $row["email"]);
-        return $customer;
+          $customer = new customer($row["firstname"], $row["lastname"], $row["country"], $row["city"], $row["zipcode"], $row["street"], $row["phone"], $row["email"]);
+          return $customer;
+        }
+   
+    } else {
+    echo "0 results";
     }
-
-
-$conn->close();
+    $conn->close();
 }
-
-
 
 function ProductByID($productID) {
       $conn = Connection::Connection();

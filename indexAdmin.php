@@ -26,7 +26,7 @@ if(isset($_POST["showProducts"]))
 }
 if(isset($_POST["newProduct"]))
 {
-    include("#");
+    include("addProductsAdmin.php");
 }
 if(isset($_POST["viewOrders"]))
 {

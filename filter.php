@@ -7,7 +7,7 @@ function runFilter()
     $conn = Connection::Connection();
 
     //CHECKS IF COLOR AND CATEGORY HAS BEEN SET AND HAS A VALUE
-    if(isset($_POST['color']) && isset($_POST['category']) && $_POST['color'] != "0" && $_POST['category'] != "0")
+    if(isset($_POST['color']) && isset($_POST['category']) && $_POST['color'] != 0 && $_POST['category'] != 0)
     {
 
       //Query
@@ -27,7 +27,7 @@ function runFilter()
       return $results;
     }
     //OR IF ONLY COLOR HAS BEEN SET
-    else if (isset($_POST['color']) && isset($_POST['category']) && $_POST['category'] == "0")
+    else if (isset($_POST['color']) && isset($_POST['category']) && $_POST['category'] == 0)
     {
       //query
       $query = "SELECT ProductID, title, color, price, image 
@@ -44,7 +44,7 @@ function runFilter()
             return $results;
     }
     //OR IF ONLY CATEGORY HAS BEEN SET
-    else if(isset($_POST['category']) && isset($_POST['color']) && $_POST['color'] == "0")
+    else if(isset($_POST['category']) && !isset($_POST['color']))
     {
             //query
             $query = "SELECT ProductID, title, color, price, image 
@@ -59,6 +59,19 @@ function runFilter()
             
                   //Return results
                   return $results;
+    }
+    //SOMETHING IS WRONG...
+    else
+    {
+      $query = "SELECT ProductID, title, color, price, image 
+      FROM Products";
+
+$stmt = $conn->prepare($query);
+$stmt->execute();
+$results = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); 
+
+//Return results
+return $results;
     }
 
     $conn->close();
@@ -80,6 +93,9 @@ function printProducts($results)
   }
   </style>
 <?php 
+if($results != null) {
+
+
 foreach ($results as $row) {
   
 
@@ -104,6 +120,6 @@ foreach ($results as $row) {
 <?php } ?>
 <?php
 }
-
+}
 printProducts(runFilter());
 

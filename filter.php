@@ -1,97 +1,13 @@
 <?php
 
-//RETURNS QUERY DEPENDING ON WHAT USER WANTS TO FILTER BY
-function getCategoryQuery($category)
-{
-  switch ($category) {
-    case '1':
-      return "SELECT ProductID, title, color, price, image 
-      FROM Products
-      WHERE CategoryID = 1";
-      break;
-    case '2':
-      return "SELECT ProductID, title, color, price, image 
-      FROM Products
-      WHERE CategoryID = 2";
-      break;
-    case '3':
-      return "SELECT ProductID, title, color, price, image 
-      FROM Products
-      WHERE CategoryID = 3";
-      break;
-    case '4':
-      return "SELECT ProductID, title, color, price, image 
-      FROM Products
-      WHERE CategoryID = 4";
-      break;
-    case '5':
-      return "SELECT ProductID, title, color, price, image 
-      FROM Products
-      WHERE CategoryID = 5";
-      break;
-    case '6':
-      return "none";
-      break;
-  }
-}
-
-
-
-function filterByCategory()
-{
-  function SelectProducts() {
-    $conn = Connection::Connection();
-
-    $sql = "SELECT ProductID, title, color, price, image FROM Products";
-    $result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        $productList[] = $row;
-    }
-    return $productList;
-} else {
-echo "0 results";
-}
-$conn->close();
-} 
-}
-
-function getFilterQuery()
-{
-if(isset($_POST['color']) && isset($_POST['category']))
-{
-  $query = "SELECT ProductID, title, color, price, image 
-  FROM Products
-  WHERE CategoryID = ? AND
-  Color = ?;
-  ";
-}
-else if(isset($_POST['color']))
-{
-  $query = "SELECT ProductID, title, color, price, image 
-  FROM Products
-  WHERE color = ?;";
-}
-else if(isset($_POST['category']))
-{
-$query = "SELECT ProductID, title, color, price, image 
-FROM Products
-WHERE CategoryID = ?;";
-}
-
-return $query;
-}
 
 function runFilter()
 {
+    //OPEN CONNECTION
     $conn = Connection::Connection();
-    $query = getFilterQuery();
 
-    $countQuestionMarks = substr_count($query, '?');
-
-    //CHECKS IF COLOR AND CATEGORY HAS BEEN SET
-    if(isset($_POST['color']) && isset($_POST['category']))
+    //CHECKS IF COLOR AND CATEGORY HAS BEEN SET AND HAS A VALUE
+    if(isset($_POST['color']) && isset($_POST['category']) && $_POST['color'] != "0" && $_POST['category'] != "0")
     {
 
       //Query
@@ -106,12 +22,12 @@ function runFilter()
       $stmt->bind_param("is", $_POST["category"], $_POST["color"]);
       $stmt->execute();
       $results = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); 
-
+      
       //Return results
       return $results;
     }
     //OR IF ONLY COLOR HAS BEEN SET
-    else if (isset($_POST['color']))
+    else if (isset($_POST['color']) && isset($_POST['category']) && $_POST['category'] == "0")
     {
       //query
       $query = "SELECT ProductID, title, color, price, image 
@@ -128,12 +44,12 @@ function runFilter()
             return $results;
     }
     //OR IF ONLY CATEGORY HAS BEEN SET
-    else if(isset($_POST['category']))
+    else if(isset($_POST['category']) && isset($_POST['color']) && $_POST['color'] == "0")
     {
             //query
             $query = "SELECT ProductID, title, color, price, image 
             FROM Products
-            WHERE color = ?;";
+            WHERE CategoryID = ?;";
       
                   //Prepare stmt
                   $stmt = $conn->prepare($query);
@@ -145,4 +61,49 @@ function runFilter()
                   return $results;
     }
 
+    $conn->close();
 }
+
+function printProducts($results)
+{
+  ?>
+  <style> 
+  .productFlexBox {
+      display: flex;
+      justify-content: center;
+      flex-flow: row-reverse wrap;
+      background-color: white;
+  } 
+  .card {
+      margin: 2em;
+      border: none;
+  }
+  </style>
+<?php 
+foreach ($results as $row) {
+  
+
+?>
+
+<!-- HTML CARD WITH VALUES FROM THE FOREACH -->
+<div class="card" style="width: 18rem;">
+  <img src="sinusmaterial/sinus assets/products/<?php echo $row['image']?>" class="card-img-top" alt="...">
+  <div class="card-body">
+      <h4 class="card-title"><?php echo $row["title"]; ?> </h4>
+      <hr>
+      <h6 class="card-title">Color:<?php echo $row["color"];?></h6>
+      <h6 class="card-title"><?php echo $row["price"]; ?> kr</h6>
+       
+       <form method="POST" action="productInfo.php"> 
+          <input type="submit" name="Details">
+          <input type="hidden" name="id" value="<?php echo $row['ProductID']; ?>"/>
+      </form>
+  </div>
+
+</div>
+<?php } ?>
+<?php
+}
+
+printProducts(runFilter());
+

@@ -30,7 +30,7 @@ if(isset($_POST["newProduct"]))
 }
 if(isset($_POST["viewOrders"]))
 {
-    include("#");
+    include("admin.viewOrders.php");
 }
 if(isset($_POST["searchOrder"]))
 {

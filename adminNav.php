@@ -2,7 +2,9 @@
 <style>
      .offcanvas {width:10% !important;}
      #category { text-align: left; background-color: White; color: black;}
-     
+     .navbar{
+    min-height:3vh;
+    max-height:3vh;}
 </style>
 
 <nav class="navbar navbar-light bg-white">

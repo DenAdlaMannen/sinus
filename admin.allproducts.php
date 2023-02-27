@@ -1,10 +1,6 @@
 <?php require_once 'connection.php';
 require_once 'admin.functions.php'?>
 
-<style> 
-    table { margin-top: 5em;}
-    .card {border:none;}
-</style>
 
   <table class="table">
     <thead class="thead-dark">
@@ -37,3 +33,5 @@ require_once 'admin.functions.php'?>
         </td>
     </tr>
   <?php } ?>
+  </tbody>
+</table>

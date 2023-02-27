@@ -20,8 +20,6 @@
         <input type="submit" name="newProduct" value="Add new product" class="btn btn-secondary btn-lg">
         <input type="submit" name="viewOrders" value="View all orders" class="btn btn-secondary btn-lg">
         <input type="submit" name="searchOrder" value="Search order" class="btn btn-secondary btn-lg">
-      </form>
-
-        
+      </form>     
     </div>
   </div>

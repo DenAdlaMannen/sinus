@@ -3,9 +3,28 @@
 include_once 'connection.php';
 include_once 'products.php';
 
+function SelectCustomerByID($customerID) {
+    $conn = Connection::Connection();
+    $sql = "SELECT `CustomerID`, `Firstname`, `Lastname`, `Country`, `City`, `Zipcode`, `Street`, 
+    `Phone`, `EmailAdress` FROM `customers` WHERE  CustomerID = $customerID ;
+    $result = $conn->query($sql);
+
+if ($result->num_rows > 0) 
+    {
+        while($row = $result->fetch_assoc()) {
+        $customer = new customer($row["firstName"], $row["lastName"], $row["country"], $row["city"], 
+        $row["zipcode"], $row["street"], $row["phone"], $row["email"]);
+        return $customer;
+    }
+
+
+$conn->close();
+}
+
+
+
 function ProductByID($productID) {
       $conn = Connection::Connection();
-
       $sql = "SELECT title, color, price, image, categoryID FROM Products
       WHERE productID= $productID";
       $result = $conn->query($sql);
@@ -21,10 +40,28 @@ function ProductByID($productID) {
   }
   $conn->close();
 }
+function SelectOrderlines($orderID){
+    $conn = Connection::Connection();
+
+    $sql = "SELECT `OrderLineID`, `ProductID`, `OrderID`, `Quantity`, `TotalPrice` FROM `orderline` WHERE orderid =  $orderID";
+    $result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+      $orderlines = new orderLine($row["OrderLineID"], $row["productID"], $row["orderID"], $row["quantity"], $row["totalprice"]);
+      return $orderlines;
+    }
+
+} else {
+echo "0 results";
+}
+
+
+
+
 
 function UpdateTitle($productID, $title){
-echo $title;
-echo $productID;
+
     $conn = Connection::Connection();
     $stmt = $conn->prepare("UPDATE products 
     SET title = ?
@@ -85,4 +122,5 @@ function UpdateCategoryID($productID, $categoryID){
         $stmt->execute();
         $stmt->close();
         $conn->close();
+}
 }

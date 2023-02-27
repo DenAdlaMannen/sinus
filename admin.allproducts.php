@@ -19,7 +19,6 @@ require_once 'admin.functions.php'?>
 </style>
 </head>
 <body>
-<h1>Admin edit</h1>
 
     <table class="table">
   <thead class="thead-dark">

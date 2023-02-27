@@ -1,6 +1,8 @@
 <!-- THIS IS THE BAR ON TOP WHERE THE SVG FOR ADMIN IS LOCATED. -->
 <style>
      .offcanvas {width:10% !important;}
+     #category { text-align: left; background-color: White; color: black;}
+     
 </style>
 
 <nav class="navbar navbar-light bg-white">
@@ -34,13 +36,13 @@
                 <div class="offcanvas-body">
                     <h3 class="canvasTitle">Category</h3>
                     <form action="index.php" method="POST" class="filterForm">
-                        <select id="category" name="category">
-                            <option value="2">T-shirts</option>
-                            <option value="1">Hoodies</option>
-                            <option value="3">Skateboards</option>
-                            <option value="5">Caps</option>
-                            <option value="4">Wheels</option>
-                            <option value="0">None</option>
+                        <select id="category" name="category" class="btn btn-secondary dropdown-toggle">
+                            <li><option value="2">T-shirts</option></li>
+                            <li><option value="1">Hoodies</option></li>
+                            <li><option value="3">Skateboards</option></li>
+                            <li> <option value="4">Wheels</option></li>
+                            <li><option value="5">Caps</option></li>
+                            <li><option value="0">None</option></li>
                         </select>
                         <br><br><hr>
 

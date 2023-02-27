@@ -9,7 +9,7 @@
 
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 35em auto 10em;
+  grid-template-rows: 22em auto 10em;
   grid-template-areas:
   "header"
   "main"
@@ -21,6 +21,7 @@
   background-color: rgb(255, 255, 255);
   grid-area: header;
   display: grid;
+  justify-items: center;
 }
 
 .main{
@@ -36,13 +37,15 @@
 .image{
   width: 100%;
   margin: 0px;
+  display:grid;
+  align-content: center;
+  justify-content: center;
 }
 
 .logoHeader
 {
   height: 15em;
-  align-self: flex-start;
-  justify-self: flex-start;
+  justify-self: center;
 }
 
 .search

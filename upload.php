@@ -1,8 +1,6 @@
 <?php
-
 require_once "addProductsAdmin.php";
 require_once 'connection.php';
-
 
 function HandleUploadForm()
 {
@@ -42,7 +40,6 @@ function HandleUploadForm()
     {
         $attributePrice = 0;
     }
-  
 
     $currentDirectory = getcwd();
     $uploadDirectory = "/sinusmaterial/sinus assets/products/";
@@ -58,7 +55,6 @@ function HandleUploadForm()
     $tmp = explode('.', $fileName);
     $fileExtension = end($tmp); //gets the last element from the exploded array
       
-
     $uploadPath = $currentDirectory . $uploadDirectory . basename($fileName); 
 
     if (isset($_POST['submit'])) {
@@ -87,10 +83,9 @@ function HandleUploadForm()
 
     }
 
-    //the product object that will be returnable
+    //the product array that will be returnable
     $newProduct = array("productName" => $attributeProductName,"category"=> $attributeCategory, "color"=> $attributeColor, "price"=> $attributePrice, "fileToUpload"=> $fileName);
     
-
     return $newProduct;
     
 }
@@ -99,9 +94,6 @@ function CheckCategoryExists($newProduct) //Make sure categoryName don't duplica
 
 {
     $conn = Connection::Connection();
-
-
-
 }
 
 
@@ -139,6 +131,7 @@ function AddNewProductDB($newProduct, $newCategoryID)
     return $confirmation;
 }
 
+//Run functions
 
 $newProduct = HandleUploadForm();
 $newCategoryID = AddCategoryDB($newProduct);
@@ -146,6 +139,4 @@ $confirmation = AddNewProductDB($newProduct, $newCategoryID);
 
 //var_dump($newCategoryID);
 //var_dump($newProduct);
-
-
 ?>

@@ -50,6 +50,5 @@ Class Products
     $conn->close();
 
     } 
-   
-  
+     
 ?>

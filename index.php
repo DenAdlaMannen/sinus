@@ -60,15 +60,16 @@ foreach($productList as $product)
                 <input type="hidden" name="id" value="<?php echo $product["ProductID"]; ?>"/>
             </form>
         </div>
-    </div>      
-<?php } 
+    </div>  
+    <?php } 
 
 }
 ?>
 
-    </div>
+</div>
 
-    </div>
+</div>
+   
 
     <!-- FOOTER START -->
     <div class="footer"></div>

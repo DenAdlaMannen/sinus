@@ -62,7 +62,7 @@ public static function InsertCustomerDB ($conn, $newCustomer) //add new row to d
 {
   $conn = Connection::Connection();
 
-  $stmt = $conn->prepare("INSERT INTO customers (Firstname, Lastname, Country, City, Zipcode, Street, Phone, EmailAddress) VALUES (?,?,?,?,?,?,?,?)");
+  $stmt = $conn->prepare("INSERT INTO customers (Firstname, Lastname, Country, City, Zipcode, Street, Phone, Email) VALUES (?,?,?,?,?,?,?,?)");
   $stmt ->bind_param("ssssisss", $firstName, $lastName, $country, $city, $zipcode, $street,$phone,$email);
 
   $firstName = $newCustomer->firstName;

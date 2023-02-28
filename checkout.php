@@ -10,7 +10,7 @@
 <?php session_start(); ?>
 
 <?php require_once 'connection.php';?>
-<?php session_start(); ?>
+
 <h3>You have chosen the follwing items:</h3>
 
 <?php
@@ -192,7 +192,9 @@ OrderFunctions::CreateOrderLine($order_ID, $orderLineLength, $itemsInCartList);
 ?>
 
 
-<?php if (count($_POST)>0) echo '<h1>Thank you for shopping at Sinus!</h1>'; ?>
+<?php if (count($_POST)>0) echo '<h1>Thank you for shopping at Sinus!</h1>';
+echo "Your ordernumber is: #" . $order_ID;
+?>
 
 </body>
 </html>

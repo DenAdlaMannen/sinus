@@ -20,7 +20,10 @@
       <div class="menu">
       <!-- TEST---------------------------------------------------------- -->
     <?php 
-    include_once 'connection.php';
+
+  include_once 'connection.php';
+  function printCategories()
+  {
     $connMenu = Connection::Connection();
     $connMenu2 = Connection::Connection();
 
@@ -34,19 +37,27 @@
     $result2 = mysqli_query($connMenu2, $query2);
  
      $counter = 1;
-?>
-  <form action="index.php" method="POST">
-  <label for="category">Choose filters :</label>
+     
+
+    ?>
+
+
   <select id="category" name="category">
   <option value="0">None</option>
 <?php
     //ALL RESULTS STORED IN ROW IN ASSOC ARRAY BELOW
     while (($row = mysqli_fetch_assoc($result))) {
         ?>
-    <?php if($row['CategoryName'] != Null) { ?> <option value=<?php echo $counter?>><?php echo $row['CategoryName'] ?></option> <?php } ?>
+  <?php if($row['CategoryName'] != Null) { return?> <option value=<?php echo $counter?>><?php echo $row['CategoryName'] ?></option> <?php } ?>
    
 <?php $counter++;}?>
 </select><br>
+
+<?php
+  }
+
+?>
+  
 
 <input type="radio" id="radioInfo" name="color" value="0">
 <label for="radioInfo">None</label><br>

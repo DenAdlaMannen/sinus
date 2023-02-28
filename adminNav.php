@@ -39,8 +39,7 @@
                     <h3 class="canvasTitle">Category</h3>
                     <form action="index.php" method="POST" class="filterForm">
                         <select id="category" name="category" class="btn btn-secondary dropdown-toggle">
-                            <li><option value="2">T-shirts</option></li>
-                            <li><option value="1">Hoodies</option></li>
+                        <li><option value="1">Hoodies</option></li>
                             <li><option value="3">Skateboards</option></li>
                             <li> <option value="4">Wheels</option></li>
                             <li><option value="5">Caps</option></li>

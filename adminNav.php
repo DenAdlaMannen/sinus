@@ -84,7 +84,7 @@
             <th class="fillOutRightRow"><style> .fillOutRightRow { width: 22vw;} </style>
         </th>
         <th class="cartRow"> <style> .cartRow { width: 5vw;} </style>
-            <a class="navbar-brand" href="indexAdmin.php"> 
+            <a class="navbar-brand" href="cart.php"> 
                 <img src="sinusmaterial/sinus assets/logo/cart4.svg" width="40" height="40" class="adminImg" alt="Small image of a torso and head with a small gearhead on it.">
             </a>
         </th>

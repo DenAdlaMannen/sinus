@@ -48,7 +48,7 @@ function SelectOrderByOrderID($orderID) {
 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        $order[] = $row;
+        $order = $row;
     }
     return $order;
 } else {

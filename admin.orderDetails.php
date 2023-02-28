@@ -20,47 +20,55 @@ require_once 'admin.functions.php'?>
 </style>
 </head>
 <body>
-<?php $order= $_POST['submit']; 
+<?php $orderID= $_POST['submit']; 
 
-        $orderlines = SelectOrderlines($orderID);
+
+        $result = SelectOrderlines($orderID);
         $order = SelectOrderByOrderID($orderID);
-        $order->getCustomerID($orderID);
-        
-
-       
+        $customer = SelectCustomerByID($order['CustomerID']);
+      
+    
 ?>
-<div>
-    <p>namn</p>
-  </div>
 
+    <p>Order ID <?php echo $orderID ?><p>
+        <p>Order date <?php echo $order['OrderDate'] ?></p>
+        <p><?php echo $customer->get_firstname();?> <?php echo $customer->get_lastName(); ?></p>
+        <address><?php echo $customer->get_street();?><br>
+        <?php echo $customer->get_zipcode();?> <?php echo $customer->get_city(); ?> 
+        <br><?php echo $customer->get_country(); ?>
+        </address>
+    
+        <p><?php echo $customer->get_phone(); ?></p>
+        <p><?php echo $customer->get_email(); ?></p>
+  
 
     <table class="table">
   <thead class="thead-dark">
     <tr>
 
-      <th scope="col">Order ID</th> 
-      <th scope="col">Customer ID</th>
-      <th scope="col">Orderdate</th>
+      <th scope="col">Orderline</th>
+      <th scope="col">Product ID</th>
+      <th scope="col">Product name</th>
+      <th scope="col">Product Price</th> 
+      <th scope="col">Quantity</th>
+      <th scope="col">Total price</th>
       <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
 
 <?php
-
- $orders = SelectOrders();  
-
- foreach ($orders as $order){?>
+  while($row = $result->fetch_assoc()) { ?>
     <tr>
-      
-        <td><?= $order["OrderID"]?></td>
-        <td><?= $order["CustomerID"]?></td>
-        <td><?= $order["OrderDate"]?></td>
-        <td>
-            <form action="admin.orderDetails.php" method='post'>
-                <button name='submit'  value=<?php echo $order['OrderID']; ?> >View</button>
-            </form>
-        </td>
-        
-    </tr>
-    <?php } ?>
+    
+        <td><?php echo $row['OrderLineID'];?></td>
+        <td><?php echo $row['ProductID'];?></td>
+        <td><?php echo $row['Title'];?></td>
+        <td><?php echo $row['price'];?></td>
+        <td><?php echo $row['Quantity'];?></td>
+        <td><?php echo $row['TotalPrice'];?></td>
+  </tr>
+<?php } ?>
+
+
+

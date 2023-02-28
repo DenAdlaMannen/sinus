@@ -43,9 +43,9 @@ if(!isset($_SESSION['user']))
   }
   //UNSUCCESSFULL LOG IN
   else{
-    // Header("Location: login.php");
-    // exit();
-  }
+
+      $failedLogIn = true;
+      }
 }
 else if(isset($_SESSION['user']))
 {
@@ -53,5 +53,8 @@ header("Location: ../indexAdmin.php");
 exit();
 }
 }
+
+//TEST
+
 
 ?>

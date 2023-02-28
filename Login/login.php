@@ -30,13 +30,16 @@
       <div class="formDiv">
       <form action="login.php" method="POST" class="form">
         <label for="username">Username: </label>
-        <input type="text" name="username" placeholder="Username">
+        <input type="text" name="username" placeholder="Username" required>
         <br><br>
         <label for="password">password: </label>
-        <input type="password" name="password" placeholder="Password">
+        <input type="password" name="password" placeholder="Password" required>
         <br><br>
         <input type="submit" value="Login" class="loginBtn btn btn-outline-secondary">
       </form>
+      <!-- DISPLAYS ERROR MSG IF THE INPUT IS NOT CORRECT -->
+      <?php if(isset($failedLogIn)){?> <p class="errorMsg">Invalid password or username</p> <?php } ?>
+
       <a href="../index.php" class="customerLink">BACK TO CUSTOMER PAGE</a>
       </div>
     </div>

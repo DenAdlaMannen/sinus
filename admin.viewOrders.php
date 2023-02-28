@@ -1,7 +1,7 @@
+
 <?php require_once 'connection.php';
 require_once 'order.php';
 require_once 'admin.functions.php'?>
-<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">

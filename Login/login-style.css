@@ -1,0 +1,48 @@
+.loginHeader{
+  font-size: 55px;
+  margin-top: 1em;
+}
+
+.form
+{
+  width: 20em;
+  height: 15em;
+}
+
+.formDiv{
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  height: 30em;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  width: 40em;
+}
+
+input{
+float: right;
+}
+
+.main{
+  display: grid;
+  justify-items: center;
+}
+
+.loginBtn
+{
+  display: inline-block;
+}
+
+.customerLink
+{
+  text-decoration: none;
+  position: absolute;
+  margin-top: 15em;
+  font-size: 20px;
+}
+
+.errorMsg
+{
+  color: red;
+  position: absolute;
+  margin-top: 5em;
+}

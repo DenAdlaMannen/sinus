@@ -86,3 +86,15 @@ INSERT INTO `products` (`ProductID`, `Title`, `CategoryID`, `Color`, `Price`, `I
 (25, 'Sinus Wheel Rocket', 4, 'red', 299, 'sinus-wheel-rocket.png'),
 (26, 'Sinus Wheel Spinner', 4, 'white', 299, 'sinus-wheel-spinner.png'),
 (27, 'Sinus Wheel Wave', 4, 'black', 299, 'sinus-wheel-wave.png');
+
+//CREATE ADMIN TABLE
+
+CREATE table admins (
+adminID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+Username varchar(100) NOT NULL,
+Password varchar (100) NOT NULL
+)
+
+
+//CREATE MAIN ADMIN, THE MD5 IS TO HASH THE PASSWORD
+INSERT INTO admins (Username, Password) VALUES ('admin', md5('admin'))

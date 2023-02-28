@@ -1,4 +1,4 @@
-
+<?php require 'login/checkTest.php' ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +12,10 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </head>
 <body>
+    <form action="Login/checkTest.php" method="POST">
+        <input type="hidden" name="logout" value="logout">
+        <input type="submit" value="Logout" class="btn btn-outline-secondary">
+    </form>
 <?php require 'adminNav.php'?>
  <!-- CONTAINER START -->
 <div class="container">

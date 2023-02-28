@@ -2,6 +2,7 @@
 
 include_once 'connection.php';
 include_once 'products.php';
+include_once 'customer.php';
 
 function SelectCustomerByID($customerID) {
     $conn = Connection::Connection();
@@ -39,17 +40,15 @@ function ProductByID($productID) {
 function SelectOrderlines($orderID){
     $conn = Connection::Connection();
 
-    $sql = "SELECT `OrderLineID`, `ProductID`, `OrderID`, `Quantity`, `TotalPrice` FROM `orderline` WHERE orderid =  $orderID";
+    $sql = "SELECT orderline.OrderLineID, orderline.ProductID, products.Title, products.price, orderline.Quantity, OrderLine.TotalPrice
+    FROM Orderline
+    INNER JOIN products ON Orderline.productID = products.ProductID
+    WHERE orderid = $orderID";
     $result = $conn->query($sql);
+    return $result;
 
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-      $orderlines = new orderLine($row["OrderLineID"], $row["productID"], $row["orderID"], $row["quantity"], $row["totalprice"]);
-      return $orderlines;
-    }
 
-} else {
-echo "0 results";
+
 }
 
 
@@ -118,5 +117,4 @@ function UpdateCategoryID($productID, $categoryID){
         $stmt->execute();
         $stmt->close();
         $conn->close();
-}
 }

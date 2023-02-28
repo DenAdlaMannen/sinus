@@ -56,7 +56,7 @@ ViewProduct($_POST['id']); ?>
         while($row = $result->fetch_assoc()) { ?>
         <div class="productView">
         
-             <h1><?php echo $row['Title'];?></h1>
+            <h1><?php echo $row['Title'];?></h1>
             <hr>
             <h4>Color: <?php echo $row['Color'];?></h4>
             <h4>Price: <?php echo $row['Price'];?></h4>

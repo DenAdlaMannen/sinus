@@ -10,12 +10,32 @@
 <nav class="navbar navbar-light bg-white">
 <table>
     <tr>
-        <th class="adminRow"> <style> .adminRow { width: 5vw;} </style>
+        <th class="adminRow"> <style> .adminRow { width: 3vw;} </style>
             <a class="navbar-brand" href="indexAdmin.php">
                 <img src="sinusmaterial/sinus assets/logo/person-gear.svg" width="40" height="40" class="adminImg" alt="Small image of a torso and head with a small gearhead on it.">
             </a>
         </th>
-        <th class="fillOutMiddleRow"><style> .fillOutMiddleRow { width: 52vw;} </style>
+        
+<!-- 'LOGOUT' AND 'CREATE USER' BUTTONS, TRIGGER IF USER IS LOGGED IN -->
+        <th class="adminRow"> <style> .logoutRow { width: 4vw;} </style>
+        <?php if(isset($_SESSION['user'])) { ?>
+            <form action="Login/checkTest.php" method="POST">
+                <input type="hidden" name="logout" value="logout">
+                <input type="submit" value="Logout" class="btn btn-outline-secondary">
+            </form>
+        <?php } ?>  
+        </th>
+
+        <th class="adminRow"> <style> .createUserRow { width: 4vw;} </style>
+        <?php if(isset($_SESSION['user'])) { ?>
+            <form action="Login/createAdmin.php" method="POST">
+                <input type="hidden" name="create" value="create">
+                <input type="submit" value="Create Admin" class="btn btn-outline-secondary">
+            </form>
+        <?php } ?>
+
+        </th>
+        <th class="fillOutMiddleRow"><style> .fillOutMiddleRow { width: 47vw;} </style>
         </th>
 
 <!-- Search-function -->

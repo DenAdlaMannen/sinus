@@ -1,5 +1,5 @@
 
-<?php require 'checkTest.php'?>
+<?php require 'checkTestLogins.php'?>
 <?php require 'createAdminClass.php'?>
 
 <!DOCTYPE html>

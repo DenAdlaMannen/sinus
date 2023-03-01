@@ -35,6 +35,17 @@
         <?php } ?>
 
         </th>
+
+        <th class="adminRow"> <style> .manageAdmins { width: 4vw;} </style>
+        <?php if(isset($_SESSION['user'])) { ?>
+            <form action="Login/manageAdmins.php" method="POST">
+                <input type="hidden" name="manage" value="manage">
+                <input type="submit" value="Manage Admins" class="btn btn-outline-secondary">
+            </form>
+        <?php } ?>
+
+        </th>
+
         <th class="fillOutMiddleRow"><style> .fillOutMiddleRow { width: 47vw;} </style>
         </th>
 

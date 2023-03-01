@@ -34,7 +34,7 @@ if(!isset($_SESSION['user']))
 
   $users = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); 
 
-  //SUCCESSFULL LOG IN
+  //SUCCESSFULL LOG IN, CHANGED TO EMPTY. OLD CODE= $users != NULL
   if($users != NULL)
   {
     $_SESSION['user'] = $_POST['username'];

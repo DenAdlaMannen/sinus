@@ -21,6 +21,10 @@ require 'connection.php'?>
 </div>
 <div class="main">
 <?php
+if(isset($_POST["manage"]))
+{
+    include("Login/manageAdmins.php");
+}
 if(isset($_POST["showProducts"]))
 {
     include("admin.allproducts.php");

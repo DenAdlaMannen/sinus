@@ -1,5 +1,6 @@
 
-<?php require 'checkTest.php'?>
+<?php require 'checkTestLogins.php'?>
+<?php require 'createAdminClass.php'?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,20 +29,21 @@
     <!-- MAIN START -->
     <div class="main">
       <div class="formDiv">
-      <form action="login.php" method="POST" class="form">
+      <form action="createAdmin.php" method="POST" class="form">
         <label for="username">Username: </label>
-        <input type="text" name="username" placeholder="Username" required>
+        <input type="text" name="usernameCreate" placeholder="Username" required>
         <br><br>
         <label for="password">Password: </label>
-        <input type="password" name="password" placeholder="Password" required>
+        <input type="password" name="passwordCreate" placeholder="Password" required>
         <br><br>
         <label for="repassword">Repeat: </label>
-        <input type="repassword" name="repassword" placeholder="Password" required>
+        <input type="password" name="repasswordCreate" placeholder="Password" required>
         <br><br>
         <input type="submit" value="Create user" class="loginBtn btn btn-outline-secondary">
       </form>
       <!-- DISPLAYS ERROR MSG IF THE INPUT IS NOT CORRECT -->
-      <?php if(isset($userExist)){?> <p class="errorMsg">Invalid password or username</p> <?php } ?>
+      <?php if(isset($userExist)){ echo '<script>alert("Username already exists!")</script>'; }?>
+      <?php if(isset($notEqualPass)){ echo '<script>alert("Passwords must match!")</script>'; }?>
       <a href="../indexAdmin.php" class="customerLink">BACK TO ADMIN PAGE</a>
       </div>
     </div>

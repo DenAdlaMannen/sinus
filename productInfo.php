@@ -1,6 +1,6 @@
 <?php require_once 'connection.php';
 include 'moreColors.php';
-
+session_start(); 
 ?>
 
 <!DOCTYPE html>
@@ -75,7 +75,7 @@ ViewProduct($_POST['id']); ?>
        
         //not the optimal location for the method call, but currently the easiest way to access the variables
         ViewOtherColors($row["CategoryID"], $row["ProductID"]); 
-    }
+        }
     } 
 
  ?>
@@ -85,10 +85,10 @@ ViewProduct($_POST['id']); ?>
   
         </div>
         
-        <!-- INCLUDES ADD TO CART IF PRESSED -->
-        <?php if(isset($_POST["addtocart"]))
+<!-- INCLUDES ADD TO CART IF PRESSED -->
+<?php if(isset($_POST["addtocart"]))
 {
-    include "confirmCart.php";
+    require "confirmCart.php";
 } ?>
 
 <div> 

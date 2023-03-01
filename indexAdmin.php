@@ -34,7 +34,7 @@ if(isset($_POST["viewOrders"]))
 }
 if(isset($_POST["searchOrder"]))
 {
-    include("#");
+    include("searchOrder.php");
 }
 if(isset($_POST["details"]))
 {

@@ -1,4 +1,5 @@
-<?php require 'login/checkTest.php' ?>
+<?php require 'login/checkTest.php'; 
+require 'connection.php'?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,6 +44,10 @@ if(isset($_POST["details"]))
 if(isset($_POST["edit"]))
 {
     include("admin.edit.php");
+}
+if (isset($_POST["order"]))
+{
+    include("searchOrderResult.php");
 }
 ?>
 </div>

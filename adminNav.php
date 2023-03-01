@@ -20,7 +20,7 @@
 
 <!-- Search-function -->
         <th class="searchRow"><style> .searchRow { width: 10vw;} </style>
-            <form action="Post">
+            <form action="index.php" method="POST">
                 <input type="text" class="form-control" name="search" placeholder="Search..">
         </th> 
 
@@ -36,42 +36,33 @@
                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
                 </div>
                 <div class="offcanvas-body">
-                    <h3 class="canvasTitle">Category</h3>
-                    <form action="index.php" method="POST" class="filterForm">
-                        <select id="category" name="category" class="btn btn-secondary dropdown-toggle">
-                        <li><option value="1">Hoodies</option></li>
-                            <li><option value="3">Skateboards</option></li>
-                            <li> <option value="4">Wheels</option></li>
-                            <li><option value="5">Caps</option></li>
-                            <li><option value="0">None</option></li>
-                        </select>
-                        <br><br><hr>
+                <form method="POST">
+                    <select id="category" name="category" class="btn btn-secondary dropdown-toggle">
+                        <h3 class="canvasTitle">Category</h3>
+                        <?php $categories = viewFilterCategories();
+                        $counter = 1; // Counts up options-value
+                        foreach ($categories as $category) { ?>
+                            <li><option value="<?php echo $counter?>"><?php echo $category?></option></li>
+                            <?php $counter++; ?>
+                            <?php echo $category;
+                        }?>
+                        <li><option value="0">None</option></li>
+                    </select>
 
-                    <h3 class="canvasTitle">Color</h3>
-                        <input type="radio" id="html" name="color" value="green">
-                        <label for="html">Green</label><br>
-                        <input type="radio" id="css" name="color" value="purple">
-                        <label for="css">Purple</label><br>
-                        <input type="radio" id="javascript" name="color" value="red">
-                        <label for="javascript">Red</label><br>
-                        <input type="radio" id="javascript" name="color" value="grey">
-                        <label for="javascript">Grey</label><br>
-                        <input type="radio" id="javascript" name="color" value="blue">
-                        <label for="javascript">Blue</label><br>
-                        <input type="radio" id="javascript" name="color" value="multicolor">
-                        <label for="javascript">Multicolor</label><br>
-                        <input type="radio" id="javascript" name="color" value="black">
-                        <label for="javascript">Black</label><br>
-                        <input type="radio" id="javascript" name="color" value="yellow">
-                        <label for="javascript">Yellow</label><br>
-                        <input type="radio" id="javascript" name="color" value="pink">
-                        <label for="javascript">Pink</label><br>
-                        <input type="radio" id="javascript" name="color" value="white">
-                        <label for="javascript">White</label><br>
-                        <input type="radio" id="javascript" name="color" value="0">
-                        <label for="javascript">None</label>  
-                        <br><br>
-                        <input name="btn" class="btn btn-outline-secondary" type="submit" value="Filter">
+                    <br><hr><br>
+
+                    <h3 class="canvasTitle">Colors</h3>
+                    <?php $colors = viewFilterColors();
+                    $counterColor = 1; // Counts up options-value
+                    foreach ($colors as $color) { ?>
+                        <input type="radio" name="color" value="<?php echo $color?>">
+                        <label for="html"><?php echo $color?></label><br>
+                        <?php $counterColor++; ?>
+                 <?php } ?>
+                    <input type="radio" name="color" value="0">
+                    <label for="html">None</label><br>
+                    
+                    <input type="submit" class="btn btn-outline-secondary">
                     </form>
                 </div>
             </div>
@@ -94,3 +85,39 @@
 
 
 
+<!-- FUNCTIONS FOR DISPLAY FILTER IN ADMIN-NAV -->
+<?php Function viewFilterCategories() {
+    include_once 'connection.php';
+    $connMenu = Connection::Connection();
+  
+    $query = "SELECT DISTINCT CategoryName
+              FROM category";
+    $result = mysqli_query($connMenu, $query);
+    $categories = array();?>
+    
+
+  <?php while (($row = mysqli_fetch_assoc($result))) { ?>
+    <?php if($row['CategoryName'] != Null) { ?> 
+      <?php array_push($categories, $row['CategoryName']);
+    }
+  }
+  return $categories;
+}?>
+
+
+<?php Function viewFilterColors() { 
+$connMenu = Connection::Connection();
+
+$query = "SELECT DISTINCT Color
+               FROM Products";
+$result = mysqli_query($connMenu, $query);
+$colors = array();?>
+
+<!-- FETCH COLORS -->
+<?php while ($row = mysqli_fetch_assoc($result)) { ?>
+  <?php if($row['Color'] != Null) { ?>   
+    <?php array_push($colors, $row['Color']);?>
+  <?php } 
+  }
+  return $colors; 
+}?>

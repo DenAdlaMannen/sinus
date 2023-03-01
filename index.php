@@ -39,7 +39,7 @@ session_start();
     {
       require 'search.php';
     }
-    else if(isset($_POST['category']) || isset($_POST['color']) || isset($_POST['price']))
+    else if(isset($_POST['category']) || isset($_POST['color']))
     {
         require 'filter.php';
     }
@@ -53,7 +53,7 @@ foreach($productList as $product)
         <div class="card-body">
             <h4 class="card-title"><?php echo $product["title"]; ?> </h4>
             <hr>
-            <h6 class="card-title">Color:<?php echo $product["color"];?></h6>
+            <h6 class="card-title">Color: <?php echo $product["color"];?></h6>
             <h6 class="card-title"><?php echo $product["price"]; ?> kr</h6>
             <form method="POST" action="productInfo.php"> 
                 <input type="submit" class="btn btn-outline-secondary" value="Details" >
@@ -65,16 +65,8 @@ foreach($productList as $product)
 
 }
 ?>
-
 </div>
-
 </div>
-   
-
-    <!-- FOOTER START -->
-    <div class="footer"></div>
-
-
-  </div>
+</div>
 </body>
 </html>

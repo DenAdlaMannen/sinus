@@ -16,20 +16,18 @@ include 'moreColors.php';
 <style>
     .productView {text-align:center;}
     .card-img-full {
-        height: 45vh;
+        height: 30vh;
         width: auto; 
         margin-bottom: 2em;
     }
     .cartForm { margin: 2em; }
+    .hrImage { width: 15vw;  margin: auto; }
 </style>
 </head>
 <body>
-<!-- CONTAINER START -->
+<?php require 'adminNav.php'?>
 <div class="container">
-
-  <!-- HEADER START -->
 <?php require 'menu.php'?>
-
 <!-- MAIN START -->
 <div class="main">
 <?php if(isset($_POST['id']) && empty($_POST['addtocart'])) {
@@ -60,7 +58,7 @@ ViewProduct($_POST['id']); ?>
         <div class="productView">
             
             <h1><?php echo $row['Title'];?></h1>
-            <hr>
+            <hr class="hrImage">
             <h4>Color: <?php echo $row['Color'];?></h4>
             <h4>Price: <?php echo $row['Price'];?></h4>
             <h4>Category: <?php echo $row['CategoryName'];?></h4>
@@ -69,6 +67,7 @@ ViewProduct($_POST['id']); ?>
                 <input type="submit" name ="addtocart" class="btn btn-outline-secondary" value="Add to cart" >
                 <input type="hidden" name="id" value="<?php echo $row["ProductID"]; ?>"/>
             </form>
+            <hr> 
         </div>
 
         <?php      

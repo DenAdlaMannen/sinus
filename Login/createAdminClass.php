@@ -26,8 +26,8 @@ function usernameExist()
   }
   //UNSUCCESSFULL, USERNAME EXISTS
   else{
+      $userExist = true;
       return true;
-      $failedLogIn = true;
       }
 }
 ?>

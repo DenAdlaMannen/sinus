@@ -6,7 +6,7 @@ function runFilter()
     //OPEN CONNECTION
     $conn = Connection::Connection();
 
-    //CHECKS IF COLOR AND CATEGORY HAS BEEN SET AND HAS A VALUE
+    //CHECKS IF COLOR AND CATEGORY HAS BEEN SET AND HAS A VALUE NOT EQUAL TO 0 (NONE)
     if(isset($_POST['color']) && isset($_POST['category']) && $_POST['color'] != 0 && $_POST['category'] != 0)
     {
 
@@ -44,7 +44,7 @@ function runFilter()
             return $results;
     }
     //OR IF ONLY CATEGORY HAS BEEN SET
-    else if(isset($_POST['category']) && !isset($_POST['color']))
+    else if(isset($_POST['category']) && isset($_POST['color']) && $_POST['color'] == 0)
     {
             //query
             $query = "SELECT ProductID, title, color, price, image 
@@ -60,7 +60,8 @@ function runFilter()
                   //Return results
                   return $results;
     }
-    //SOMETHING IS WRONG...
+    //SOMETHING IS WRONG... IT WILL NEVER ACCESS THIS ELSE. WEIRD THING: IF YOU MAKE IT
+    //IF ELSE WITH STATEMENT IT WONT RUN THE OTHER ELSE IF'S ABOVE???
     else
     {
       $query = "SELECT ProductID, title, color, price, image 
@@ -119,6 +120,9 @@ foreach ($results as $row) {
 </div>
 <?php } ?>
 <?php
+}
+else{
+  echo "NO RESULTS";
 }
 }
 printProducts(runFilter());

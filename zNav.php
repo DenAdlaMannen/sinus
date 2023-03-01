@@ -55,7 +55,7 @@
                     <?php $colors = viewFilterColors();
                     $counterColor = 1; // Counts up options-value
                     foreach ($colors as $color) { ?>
-                        <input type="radio" name="color" value="<?php echo $counterColor?>">
+                        <input type="radio" name="color" value="<?php echo $color?>">
                         <label for="html"><?php echo $color?></label><br>
                         <?php $counterColor++; ?>
                  <?php } ?>

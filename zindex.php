@@ -41,9 +41,8 @@ session_start();
     }
     else if((isset($_POST["category"])) || (isset($_POST["color"])))
     {?>
-       <h1> SÅ HÄR BLIR DET </h1> <br>
-       <p><?php echo $_POST["category"]?></p> <br>
-       <p><?php echo $_POST["color"]?></p> <br>
+
+      <?php require 'filter.php'?>
 <?php
     }
   else {

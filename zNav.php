@@ -20,7 +20,7 @@
 
 <!-- Search-function -->
         <th class="searchRow"><style> .searchRow { width: 10vw;} </style>
-            <form action="Post">
+            <form action="zindex.php" method="POST">
                 <input type="text" class="form-control" name="search" placeholder="Search..">
         </th> 
 
@@ -36,7 +36,7 @@
                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
                 </div>
                 <div class="offcanvas-body">
-                <form action="index.php" method="POST" class="filterForm">
+                <form method="POST">
                     <select id="category" name="category" class="btn btn-secondary dropdown-toggle">
                         <h3 class="canvasTitle">Category</h3>
                         <?php $categories = viewFilterCategories();
@@ -48,23 +48,22 @@
                         }?>
                         <li><option value="0">None</option></li>
                     </select>
-                </form>
 
                     <br><hr><br>
 
-                <form action="index.php" method="POST" class="filterForm">
                     <h3 class="canvasTitle">Colors</h3>
                     <?php $colors = viewFilterColors();
-                    $counter = 1; // Counts up options-value
+                    $counterColor = 1; // Counts up options-value
                     foreach ($colors as $color) { ?>
-                        <input type="radio" name="color" value="<?php echo $counter?>">
+                        <input type="radio" name="color" value="<?php echo $counterColor?>">
                         <label for="html"><?php echo $color?></label><br>
+                        <?php $counterColor++; ?>
                  <?php } ?>
                     <input type="radio" name="color" value="0">
                     <label for="html">None</label><br>
-
-                        
-                <form>
+                    
+                    <input type="submit" class="btn btn-outline-secondary">
+                    </form>
                 </div>
             </div>
             <button class="btn btn-outline-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#filterCanvas">

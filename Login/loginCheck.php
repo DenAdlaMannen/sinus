@@ -43,10 +43,10 @@ if(!isset($_SESSION['user']))
   }
   //UNSUCCESSFULL LOG IN
   else{
-
       $failedLogIn = true;
       }
 }
+//IF THERE IS A SESSION, HEAD THE USER TO INDEXADMIN PAGE
 else if(isset($_SESSION['user']))
 {
 header("Location: ../indexAdmin.php");

@@ -1,4 +1,5 @@
-<?php require 'loginCheck.php'?>
+
+<?php require 'checkTest.php'?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,8 +20,8 @@
   <!-- HEADER START! -->
   <div class="header">
     <div>
-    <h2 class="loginHeader">Login</h2>
-    <img src="../sinusmaterial\sinus assets\logo\sinus-logo-symbol.svg" class="logo">
+    <h2 class="loginHeader">Create Admin</h2>
+    <img src="../sinusmaterial\sinus assets\logo\sinus-logo-symbol.svg" class="logo" style="height: 15em;">
     </div>
 
   </div>
@@ -31,15 +32,17 @@
         <label for="username">Username: </label>
         <input type="text" name="username" placeholder="Username" required>
         <br><br>
-        <label for="password">password: </label>
+        <label for="password">Password: </label>
         <input type="password" name="password" placeholder="Password" required>
         <br><br>
-        <input type="submit" value="Login" class="loginBtn btn btn-outline-secondary">
+        <label for="repassword">Repeat: </label>
+        <input type="repassword" name="repassword" placeholder="Password" required>
+        <br><br>
+        <input type="submit" value="Create user" class="loginBtn btn btn-outline-secondary">
       </form>
       <!-- DISPLAYS ERROR MSG IF THE INPUT IS NOT CORRECT -->
-      <?php if(isset($failedLogIn)){?> <p class="errorMsg">Invalid password or username</p> <?php } ?>
-
-      <a href="../index.php" class="customerLink">BACK TO CUSTOMER PAGE</a>
+      <?php if(isset($userExist)){?> <p class="errorMsg">Invalid password or username</p> <?php } ?>
+      <a href="../indexAdmin.php" class="customerLink">BACK TO ADMIN PAGE</a>
       </div>
     </div>
 

@@ -1,5 +1,6 @@
 <?php
 
+//START SESSION
 session_start();
 
 //IF LOGOUT

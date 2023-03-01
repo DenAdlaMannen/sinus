@@ -39,9 +39,12 @@ session_start();
     {
       require 'search.php';
     }
-    else if(isset($_POST['category']) || isset($_POST['color']) || isset($_POST['price']))
-    {
-        require 'filter.php';
+    else if((isset($_POST["category"])) || (isset($_POST["color"])))
+    {?>
+       <h1> SÅ HÄR BLIR DET </h1> <br>
+       <p><?php echo $_POST["category"]?></p> <br>
+       <p><?php echo $_POST["color"]?></p> <br>
+<?php
     }
   else {
 $productList = SelectProducts(); 
@@ -66,6 +69,7 @@ foreach($productList as $product)
 }
 ?>
 
+
 </div>
 
 </div>
@@ -78,3 +82,4 @@ foreach($productList as $product)
   </div>
 </body>
 </html>
+

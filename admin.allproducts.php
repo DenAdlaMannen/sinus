@@ -27,8 +27,8 @@ require_once 'admin.functions.php'?>
         <td><?= $product["image"]?></td>
         <td><?= $product["categoryID"]?></td>
         <td>
-            <form action="admin.edit.php" method='post'>
-                <button name='submit' value=<?php echo $product['ProductID']; ?>>Edit</button>
+            <form action="indexAdmin.php" method='post'>
+                <button name='edit' value=<?php echo $product['ProductID']; ?>>Edit</button>
             </form>
         </td>
     </tr>

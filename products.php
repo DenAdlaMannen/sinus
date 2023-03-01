@@ -2,11 +2,11 @@
 
 Class Products
 { 
-  public $title;
-  public $categoryId;
-  public $color;
-  public $price;
-  public $image;
+  private $title;
+  private $categoryId;
+  private $color;
+  private $price;
+  private $image;
 
   function __construct($title, $categoryId, $color, $price, $image)
   {

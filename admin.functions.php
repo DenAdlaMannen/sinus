@@ -1,5 +1,4 @@
 <?php
-
 include_once 'connection.php';
 include_once 'products.php';
 include_once 'customer.php';
@@ -37,23 +36,16 @@ function ProductByID($productID) {
   }
   $conn->close();
 }
+
 function SelectOrderlines($orderID){
     $conn = Connection::Connection();
-
     $sql = "SELECT orderline.OrderLineID, orderline.ProductID, products.Title, products.price, orderline.Quantity, OrderLine.TotalPrice
     FROM Orderline
     INNER JOIN products ON Orderline.productID = products.ProductID
     WHERE orderid = $orderID";
     $result = $conn->query($sql);
     return $result;
-
-
-
 }
-
-
-
-
 
 function UpdateTitle($productID, $title){
 
@@ -68,6 +60,7 @@ function UpdateTitle($productID, $title){
         $stmt->close();
         $conn->close();
 }
+
 function UpdateColor($productID, $color){
 
     $conn = Connection::Connection();
@@ -81,6 +74,7 @@ function UpdateColor($productID, $color){
         $stmt->close();
         $conn->close();
 }
+
 function UpdatePrice($productID, $price){
 
     $conn = Connection::Connection();
@@ -92,6 +86,7 @@ function UpdatePrice($productID, $price){
         $stmt->close();
         $conn->close();
 }
+
 function UpdateImage($productID, $image){
 
     $conn = Connection::Connection();
@@ -105,6 +100,7 @@ function UpdateImage($productID, $image){
         $stmt->close();
         $conn->close();
 }
+
 function UpdateCategoryID($productID, $categoryID){
 
     $conn = Connection::Connection();

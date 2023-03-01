@@ -1,5 +1,5 @@
 <?php require 'login/checkTest.php'; 
-require 'connection.php'?>
+require 'connection.php';?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +45,7 @@ if(isset($_POST["details"]))
 {
     include("admin.orderDetails.php");
 }
-if(isset($_POST["edit"]))
+if(isset($_POST["edit"]) || isset($_POST["price"]))
 {
     include("admin.edit.php");
 }

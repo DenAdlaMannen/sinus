@@ -55,7 +55,7 @@ $products = $_SESSION["product"];
       <tr>
       <td>Titel: </td>
       <td><?=$products->getTitle()?></td>
-      <td><input type="text" name="title" value="<?php echo @$title;?>" placeholder="New title..."></td>
+      <td><input type="text" name="title" requied value="<?php echo @$title;?>" placeholder="New title..."></td>
       <td>
               <button name='update' value="">Update</button>
   

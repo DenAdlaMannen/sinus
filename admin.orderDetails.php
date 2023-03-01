@@ -16,6 +16,11 @@ require_once 'admin.functions.php'?>
 <style> 
     table { margin-top: 5em;}
     .card {border:none;}
+    
+    div.customer {
+      margin: 5em;
+
+    }
 
 </style>
 </head>
@@ -29,17 +34,20 @@ require_once 'admin.functions.php'?>
       
     
 ?>
+<div class = "customer" >
+          <p>Order ID <?php echo $orderID ?><p>
+          <p>Order date <?php echo $order['OrderDate'] ?></p>
+          <p><?php echo $customer->get_firstname();?> <?php echo $customer->get_lastName(); ?></p>
+          <address><?php echo $customer->get_street();?><br>
+          <?php echo $customer->get_zipcode();?> <?php echo $customer->get_city(); ?> 
+          <br><?php echo $customer->get_country(); ?>
+          </address>
+      
+          <p><?php echo $customer->get_phone(); ?></p>
+          <p><?php echo $customer->get_email(); ?></p>
 
-    <p>Order ID <?php echo $orderID ?><p>
-        <p>Order date <?php echo $order['OrderDate'] ?></p>
-        <p><?php echo $customer->get_firstname();?> <?php echo $customer->get_lastName(); ?></p>
-        <address><?php echo $customer->get_street();?><br>
-        <?php echo $customer->get_zipcode();?> <?php echo $customer->get_city(); ?> 
-        <br><?php echo $customer->get_country(); ?>
-        </address>
-    
-        <p><?php echo $customer->get_phone(); ?></p>
-        <p><?php echo $customer->get_email(); ?></p>
+
+</div>
   
 
     <table class="table">

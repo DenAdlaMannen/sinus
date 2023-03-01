@@ -49,6 +49,7 @@ function ViewOtherColors($CategoryID, $ProductID ) {
                             <img height="100%" src="sinusmaterial/sinus assets/products/<?php echo $row["Image"]?>">
                             <form method="POST" action="productInfo.php"> 
                             <input type="submit" class="btn btn-outline-secondary" value="Details" >
+                            <style> .btn { padding-top: 0.2em;} </style>
                             <input type="hidden" name="id" value="<?php echo $row["ProductID"]; ?>"/>
                              </form>
                         </div>

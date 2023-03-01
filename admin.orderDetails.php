@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <?php require_once 'connection.php';
 require_once 'order.php';
 require_once 'admin.functions.php'?>
@@ -9,23 +8,23 @@ require_once 'admin.functions.php'?>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sinus</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script> 
+  
 <style> 
-    table { margin-top: 5em;}
-    .card {border:none;}
-    
-    div.customer {
-      margin: 5em;
-
+    .customer {
+        display: flex;
+        justify-content: space-evenly;
+        padding-bottom: 5em;
+    }
+    .customer > div {
+        height: 10vh;
+        width: auto; 
+        margin: 1em;
     }
 
 </style>
 </head>
 <body>
-<?php $orderID= $_POST['submit']; 
+<?php $orderID= $_POST['details']; 
 
 
         $result = SelectOrderlines($orderID);
@@ -35,17 +34,21 @@ require_once 'admin.functions.php'?>
     
 ?>
 <div class = "customer" >
+      <div>
           <p>Order ID <?php echo $orderID ?><p>
-          <p>Order date <?php echo $order['OrderDate'] ?></p>
+          <p>Orderdate <?php echo $order['OrderDate'] ?></p>
+      </div>
+      <div>
           <p><?php echo $customer->get_firstname();?> <?php echo $customer->get_lastName(); ?></p>
           <address><?php echo $customer->get_street();?><br>
           <?php echo $customer->get_zipcode();?> <?php echo $customer->get_city(); ?> 
           <br><?php echo $customer->get_country(); ?>
           </address>
-      
+      </div>
+      <div>
           <p><?php echo $customer->get_phone(); ?></p>
           <p><?php echo $customer->get_email(); ?></p>
-
+      </div>
 
 </div>
   

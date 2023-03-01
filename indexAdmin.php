@@ -44,6 +44,14 @@ if(isset($_POST["searchOrder"]))
 {
     include("#");
 }
+if(isset($_POST["details"]))
+{
+    include("admin.orderDetails.php");
+}
+if(isset($_POST["edit"]))
+{
+    include("admin.edit.php");
+}
 ?>
 </div>
 

@@ -1,4 +1,3 @@
-
 <?php require 'loginCheck.php'?>
 
 <!DOCTYPE html>

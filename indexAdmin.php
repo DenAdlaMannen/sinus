@@ -16,6 +16,10 @@
         <input type="hidden" name="logout" value="logout">
         <input type="submit" value="Logout" class="btn btn-outline-secondary">
     </form>
+    <form action="Login/createAdmin.php" method="POST">
+        <input type="hidden" name="create" value="create">
+        <input type="submit" value="Create Admin" class="btn btn-outline-secondary">
+    </form>
 <?php require 'adminNav.php'?>
  <!-- CONTAINER START -->
 <div class="container">

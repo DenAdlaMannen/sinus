@@ -163,3 +163,5 @@ $confirmation = AddNewProductDB($newProduct, $newCategoryID);
 //var_dump($newProduct);
 
 ?>
+<br>
+<a href="indexAdmin.php">Back to Admin main</a>

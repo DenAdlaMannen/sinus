@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html>
-    
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
 <body>
 
 <?php require_once 'connection.php';?>
+
 <?php session_start(); ?>
 
 <?php require_once 'connection.php';?>
 
+<style>.alignText {
+    padding-top: 2em;
+  padding-left:20px;
+}
+</style>
+
+<div class=alignText>
 <h3>You have chosen the follwing items:</h3>
 
 <?php
@@ -35,12 +45,12 @@ function getItemsInCartList($sessionCart) {
             while ($row = $result->fetch_assoc()) {
                 $itemsInCartList[] = $row; // saves query result as array
                 $calcTotalPrice = $calcTotalPrice + $row['Price'];
-                echo  "<br>" . $row["Title"].  " " . $row['Color'] .  " ". $row['Price']. " SEK" . "<br>";
+                echo  "<br>" . "&bull; " . $row["Title"].  ", " . $row['Color'] .  ", ". $row['Price']. " SEK" . "<br>";
 
             }
             
         }
-    }echo "<h4>total price for order:   $calcTotalPrice SEK</h4>";
+    }echo "<br>" . "<h5>total price for order:   $calcTotalPrice SEK</h5>";
 
     return $itemsInCartList;
 }
@@ -49,10 +59,11 @@ function getItemsInCartList($sessionCart) {
 <?php
 $itemsInCartList = getItemsInCartList($_SESSION['Cart']);
 $orderLineLength = sizeof($itemsInCartList);
+?></div>
 
+
+<?php
 //var_dump($orderLineLength);
-
-
 /*echo "<pre>";
 echo print_r($itemsInCartList);
 echo "</pre>";*/
@@ -104,14 +115,21 @@ function test_input($data){
 }
 
 ?>
+<style>.centerForm {
+  width: 30em;
+  margin: 0 auto;
+}
+</style>
 
-
+<div class=centerForm>
+<div class="addForm">
 <fieldset>
-    <legend>Checkout</legend>
+    <legend><h2>Checkout</h2></legend>
     <form method="post">
-        <input type="hidden" name="action" value="checkout">
+        <input type="hidden" name="action" value="checkout" class="addInput">
         <label for="FirstName">First Name:</label>
         <input type="text" id="firstname" name="firstname" required>
+        <br>
         <br>
         <label for="LastName">Last Name:</label>
         <input type="text" id="lastname" name="lastname" required>
@@ -125,13 +143,16 @@ function test_input($data){
             <option value="Norway">Norway</option>
             <option value="Sweden">Sweden</option>
         </select>
-
+        <br>
+        <br>
         <label for="City">City:</label>
         <input type="text" id="city" name="city" required>
-
+        <br>
+        <br>
         <label for="FirstName">Zipcode:</label>
         <input type="text" id="zipcode" name="zipcode" required>
-
+        <br>
+        <br>
         <label for="Street">Street name:</label>
         <input type="text" id="street" name="street" required>
         <br>
@@ -149,7 +170,7 @@ function test_input($data){
         <br>
         <br>
         <br>
-        <h2>Payment method</h2>
+        <h3>Payment method</h3>
         <input type="radio" name="card" value="Visa" required>Visa debit card
         <br>
         <input type="radio" name="card" value="Mastercard">Mastercard
@@ -163,7 +184,8 @@ function test_input($data){
         <button>Submit Order</button>
     </form>
 </fieldset>
-
+</div>
+</div>
 
 <?php
 include_once "customer.php";
@@ -185,12 +207,15 @@ OrderFunctions::CreateOrderLine($order_ID, $orderLineLength, $itemsInCartList);
 //echo "THIS IS ORDER ID: " . $order_ID;
 
 //var_dump($newCustomer);
+if (count($_POST)>0) echo '<h3>Thank you for shopping at Sinus!</h3>';
+echo "<h5>Your ordernumber is: #  $order_ID</h5>";
+session_destroy();
 }
 ?>
 
+<a href="index.php">Back to main</a>
 
-<?php if (count($_POST)>0) echo '<h1>Thank you for shopping at Sinus!</h1>';
-echo "Your ordernumber is: #" . $order_ID;
+<?php 
 ?>
 
 </body>

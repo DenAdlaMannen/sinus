@@ -209,6 +209,18 @@ OrderFunctions::CreateOrderLine($order_ID, $orderLineLength, $itemsInCartList);
 //var_dump($newCustomer);
 if (count($_POST)>0) echo '<h3>Thank you for shopping at Sinus!</h3>';
 echo "<h5>Your ordernumber is: #  $order_ID</h5>";
+
+/*echo "<pre>";
+echo print_r($itemsInCartList);
+echo "</pre>";*/
+
+echo "You have bought the following items <br>"; //makes a printout of items bought
+for ($i =0; $i<$orderLineLength; $i++)
+{
+
+echo $itemsInCartList[$i]["Title"] . ", " . $itemsInCartList[$i]["Color"] . ", " . $itemsInCartList[$i]["Price"] ." SEK. <br>";
+}
+
 session_destroy();
 }
 ?>

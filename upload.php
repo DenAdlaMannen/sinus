@@ -1,6 +1,8 @@
+
 <?php
-require "addProductsAdmin.php"; //once or just require? We want this page to "stay" in the admin view
+require "addProductsAdmin.php";
 require_once 'connection.php';
+//require_once 'indexAdmin.php';
 
 
 function test_input($data){
@@ -10,16 +12,13 @@ function test_input($data){
   return $data;
 }
 
-
-
 function HandleUploadForm()
 {
 
   $attributeColor =  $attributeProductName = $attributeCategory = $attributePrice = "0";
-  $fileName = ""; //this is the value for image in DB in no file is uploaded
+  $fileName = ""; //empty string if is saved in db if no image is added
 
     //put the form inputs into variables to later make a returnable array
-
     if(isset($_POST["color"]) && empty($_POST["choiceColor"])) //if user have entered own color
     {
         $temporary1 = test_input($_POST["color"]);
@@ -31,7 +30,7 @@ function HandleUploadForm()
     {
       $attributeColor = $_POST["choiceColor"];
     }
-     //is user have chosen neither the value is "0" as stated on row 13
+     //if user have chosen neither, the value is "0" as stated on row 17
   
 
     if(isset($_POST["productName"])) 
@@ -120,13 +119,6 @@ function HandleUploadForm()
     
 }
 
-function CheckCategoryExists($newProduct) //Make sure categoryName don't duplicate//Should we really spend time on exception handling for every input the user made?
-
-{
-    $conn = Connection::Connection();
-}
-
-
 function AddCategoryDB($newProduct)
 {
     $conn = Connection::Connection();
@@ -169,4 +161,5 @@ $confirmation = AddNewProductDB($newProduct, $newCategoryID);
 
 //var_dump($newCategoryID);
 //var_dump($newProduct);
+
 ?>

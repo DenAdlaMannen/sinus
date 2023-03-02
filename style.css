@@ -48,57 +48,10 @@
   justify-self: center;
 }
 
-.search
-{
-position: absolute;
-height: 2em;
-width: 30em;
-justify-self: center;
-align-self: center;
-display: flex;
-margin-left: 55em;
-margin-bottom: 5em ;
-display: inline;
-}
-
-/* .searchBar
-{
-height: 2em;
-width: 15em;
-}
-
-.searchBtn
-{
-  height: 2.5em;
-  width: 3em;
-  border: none;
-  background-color: rgb(225, 225, 225);
-  border-radius: 4px;border: 1px solid black;
-} */
-
 .menu
 {
 justify-self: center;
 }
-
-/* .cart{
-  margin-top: -10em;
-  position: absolute;
-  height: 4em;
-  width: 7em;
-  background-color: white;
-  border: none;
-}
-
-.cartBtn{
-  text-decoration: none;
-  color: black;
-  background-color: white;
-  font-size: 60px;
-  font-weight: 500;
-  cursor: pointer;
-
-} */
 
 .productFlexBox {
   display: flex;

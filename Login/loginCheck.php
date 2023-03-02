@@ -1,4 +1,16 @@
 <?php 
+
+
+//REDIRECT TO ADMIN PAGE DOES NOT WORK IF THE USER IS ALREADY SIGNED IN
+//NOT A SECURITY PROBLEM BUT A NICE FEATURE. SAME CODE
+//BELOW AROUND LINE 62.
+if(isset($_SESSION['user']))
+{
+  header("Location: ../indexAdmin.php");
+  exit();
+}
+
+
 //START SESSION
 session_start();
 
@@ -34,7 +46,7 @@ if(!isset($_SESSION['user']))
 
   $users = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); 
 
-  //SUCCESSFULL LOG IN, CHANGED TO EMPTY. OLD CODE= $users != NULL
+  //SUCCESSFULL LOG IN
   if($users != NULL)
   {
     $_SESSION['user'] = $_POST['username'];

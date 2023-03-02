@@ -24,21 +24,20 @@ require_once 'admin.functions.php'?>
 </style>
 </head>
 <body>
+<?php //Get the posted value from details ?>
 <?php $orderID= $_POST['details']; 
-
-
         $result = SelectOrderlines($orderID);
         $order = SelectOrderByOrderID($orderID);
         $customer = SelectCustomerByID($order['CustomerID']);
-      
-    
 ?>
 <div class = "customer" >
       <div>
+      <?php //Print out orderID an orderdate?>
           <p>Order ID <?php echo $orderID ?><p>
           <p>Orderdate <?php echo $order['OrderDate'] ?></p>
       </div>
       <div>
+      <?php //Print out name and address?>
           <p><?php echo $customer->get_firstname();?> <?php echo $customer->get_lastName(); ?></p>
           <address><?php echo $customer->get_street();?><br>
           <?php echo $customer->get_zipcode();?> <?php echo $customer->get_city(); ?> 
@@ -46,13 +45,14 @@ require_once 'admin.functions.php'?>
           </address>
       </div>
       <div>
+      <?php //Print out phone and mail?>
           <p><?php echo $customer->get_phone(); ?></p>
           <p><?php echo $customer->get_email(); ?></p>
       </div>
 
 </div>
   
-
+<?php //Print out headers to the table?>
     <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -69,6 +69,7 @@ require_once 'admin.functions.php'?>
   <tbody>
 
 <?php
+    //Print out all info in a table with a loop
   while($row = $result->fetch_assoc()) { ?>
     <tr>
     

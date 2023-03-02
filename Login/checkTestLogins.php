@@ -1,5 +1,8 @@
 <?php
 
+//CHECK IF SESSION NEEDS TO BE STARTED
+if(!isset($_SESSION['user']))
+{
 //START SESSION
 session_start();
 
@@ -18,3 +21,6 @@ if(!isset($_SESSION['user']))
   Header("Location: login.php");
   exit();
 }
+
+}
+

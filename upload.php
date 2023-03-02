@@ -1,44 +1,66 @@
 <?php
-require_once "addProductsAdmin.php";
+require "addProductsAdmin.php"; //once or just require? We want this page to "stay" in the admin view
 require_once 'connection.php';
+
+
+function test_input($data){
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
+
 
 function HandleUploadForm()
 {
+
+  $attributeColor =  $attributeProductName = $attributeCategory = $attributePrice = "0";
+  $fileName = ""; //this is the value for image in DB in no file is uploaded
+
     //put the form inputs into variables to later make a returnable array
-    if(isset($_POST["color"])) 
+
+    if(isset($_POST["color"]) && empty($_POST["choiceColor"])) //if user have entered own color
     {
-        $attributeColor = $_POST["color"];  
+        $temporary1 = test_input($_POST["color"]);
+        $temporary2 = strtolower($temporary1);//downcases the first letter
+
+        $attributeColor = $temporary2;
     }
-    else 
+    else if (empty($_POST["color"]) && isset($_POST["choiceColor"]) ) //if user have chosen color
     {
-        $attributeColor = "0";
+      $attributeColor = $_POST["choiceColor"];
     }
+     //is user have chosen neither the value is "0" as stated on row 13
+  
 
     if(isset($_POST["productName"])) 
     {
-        $attributeProductName = $_POST["productName"];
-    }
-    else
-    {
-        $attributeProductName = "0";
+      $temporary1 = test_input($_POST["productName"]);
+      $temporary2 = ucfirst($temporary1);//capitalizes the first letter
+
+      $attributeProductName = $temporary2;
     }
 
-    if(isset($_POST["category"])) 
+    if(isset($_POST["category"]) && empty($_POST["choiceCategory"]) )  //if user have entered own category
     {
-        $attributeCategory = $_POST["category"];
+      $temporary1 = test_input($_POST["category"]);
+      $temporary2 = ucfirst($temporary1);
+
+      $attributeCategory = $temporary2;
     }
-    else
+    else if (empty($_POST["category"]) && isset($_POST["choiceCategory"]) ) //if user have chosen category
     {
-        $attributeCategory = "0";
+      
+      $attributeCategory = $_POST["choiceCategory"];
+
     }
+    //is user have chosen neither, the value is "0" as stated on row 18
 
     if(isset($_POST["price"])) 
     {
-        $attributePrice = $_POST["price"];
-    }
-    else 
-    {
-        $attributePrice = 0;
+        $temporary1 = test_input($_POST["price"]);
+        $attributePrice = $temporary1;
     }
 
     $currentDirectory = getcwd();
@@ -46,42 +68,50 @@ function HandleUploadForm()
 
     $errors = []; 
 
-    $AllowedFileEndings = ['jpeg','jpg','png'];
+    $AllowedFileEndings = ['jpg','png'];
 
-    $fileName = $_FILES['fileToUpload']['name']; 
-    $fileSize = $_FILES['fileToUpload']['size'];
-    $fileTmpName = $_FILES['fileToUpload']['tmp_name'];
-    $fileType = $_FILES['fileToUpload']['type'];
-    $tmp = explode('.', $fileName);
-    $fileExtension = end($tmp); //gets the last element from the exploded array
-      
-    $uploadPath = $currentDirectory . $uploadDirectory . basename($fileName); 
+    if (!empty($_FILES['fileToUpload']['name'])) 
+    {
+    
+      $fileName = $_FILES['fileToUpload']['name']; 
+      $fileSize = $_FILES['fileToUpload']['size'];
+      $fileTmpName = $_FILES['fileToUpload']['tmp_name'];
+      $fileType = $_FILES['fileToUpload']['type'];
+      $tmp = explode('.', $fileName);
+      $fileExtension = end($tmp); //gets the last element from the exploded array
+        
+      $uploadPath = $currentDirectory . $uploadDirectory . basename($fileName); 
 
-    if (isset($_POST['submit'])) {
+      if (isset($_POST['submit'])) {
 
-      if (! in_array($fileExtension,$AllowedFileEndings)) {
-        $errors[] = "This file extension is not allowed. Please upload a JPEG or PNG file";
-      }
+        if (! in_array($fileExtension,$AllowedFileEndings)) {
+          $errors[] = "File extension not allowed. Please upload a JPG or PNG file";
+        }
 
-      if ($fileSize > 1048576) { //size in bytes
-        $errors[] = "Max size for image files is 1MB";
-      }
+        if ($fileSize > 1048576) { //size in bytes
+          $errors[] = "Max size for image files is 1MB";
+        }
 
-      if (empty($errors)) {
-        $didUpload = move_uploaded_file($fileTmpName, $uploadPath);
+        if (empty($errors)) {
+          $didUpload = move_uploaded_file($fileTmpName, $uploadPath);
 
-        if ($didUpload) {
-          echo basename($fileName) . " The product has been added.";
+          if ($didUpload) {
+            echo basename($fileName) . " Image + product are added";
+          } else {
+            echo "File could not be uploaded. Please call tech.";
+          }
         } else {
-          echo "File could not be uploaded. Please call tech.";
+          foreach ($errors as $error) {
+            echo $error . "" . "\n";
+          }
         }
-      } else {
-        foreach ($errors as $error) {
-          echo $error . "" . "\n";
-        }
-      }
-
     }
+    }
+    if (empty($_FILES['fileToUpload']['name']))
+    {
+      echo "Product has been added";
+    }
+   
 
     //the product array that will be returnable
     $newProduct = array("productName" => $attributeProductName,"category"=> $attributeCategory, "color"=> $attributeColor, "price"=> $attributePrice, "fileToUpload"=> $fileName);

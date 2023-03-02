@@ -25,6 +25,10 @@ if(isset($_POST["manage"]))
 {
     include("Login/manageAdmins.php");
 }
+if(isset($_POST["deleteAdmin"]))
+{
+    include("Login/manageAdminsClass.php");
+}
 if(isset($_POST["showProducts"]))
 {
     include("admin.allproducts.php");

@@ -47,5 +47,6 @@ $conn = new mysqli($serverHost, $dbHost, $password ,$dbName);
   $conn->close(); 
 }
 
+include_once 'manageAdmins.php';
 
 ?>

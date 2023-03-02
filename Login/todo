@@ -1,6 +1,0 @@
-Om en admin är inloggad kan dom komma åt login sidan, ta bort så dom dirigeras om?
-Kolla om det finns en startad sessions o isåfall skicka vidare?
-
-Om man försöker komma åt någon admin sida så får man PAGE NOT FOUND, ska vi ha det så eller dirigera om?
-Om man dirigerar om så kommer användaren veta att sidan finns. Får man PAGE NOT FOUND kan användaren tro att sidan inte finns
-Vilket kan vara bra?

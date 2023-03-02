@@ -1,5 +1,5 @@
 <?php require 'checkTestLogins.php'?>
-<?php require 'manageAdminsClass.php'?>
+<?php include_once 'manageAdminsClass.php'?>
 <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -20,7 +20,7 @@
         <td><?= $admin["Username"]?></td>
         <td>
             <form action="indexAdmin.php" method='POST'>
-                <input type="hidden" name='deleteAdmin' value=<?php echo $admin['adminID']; ?>>
+                <input type="hidden" name='deleteAdmin' value="<?php echo $admin['adminID']; ?>">
                 <input type="submit" name="submit" value="Delete">
             </form>
         </td>

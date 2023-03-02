@@ -3,7 +3,7 @@
 require_once 'admin.functions.php';
 ?>
 
-
+<?php //Header for table ?>
     <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -17,6 +17,7 @@ require_once 'admin.functions.php';
   <tbody>
 
 <?php
+//Create a function to select all orders from DB
 function SelectOrders() {
   $conn = Connection::Connection();
   $sql = "SELECT orders.OrderID, customers.Firstname, customers.Lastname, OrderDate 
@@ -35,8 +36,9 @@ echo "0 results";
 $conn->close();
 
 } 
+// Call the function and put the info in a variabel $orders 
  $orders = SelectOrders();  
-
+// Print all orders in a loop
  foreach ($orders as $order){?>
     <tr>
       

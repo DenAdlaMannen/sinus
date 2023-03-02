@@ -1,7 +1,7 @@
 <?php require_once 'connection.php';
 require_once 'admin.functions.php'?>
 
-
+<?php //Header for table ?>
   <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -16,8 +16,9 @@ require_once 'admin.functions.php'?>
     </thead>
   <tbody>
 <?php
+//Get all products from DB
  $productList = SelectProducts();  
-
+// Print all products in a loop
  foreach ($productList as $product){?>
     <tr>
         <td><?= $product["ProductID"]?></td>

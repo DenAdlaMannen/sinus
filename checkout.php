@@ -182,6 +182,8 @@ function test_input($data){
         <br>
         <br>
         <button>Submit Order</button>
+        <br>
+        <br>
     </form>
 </fieldset>
 </div>
@@ -225,10 +227,10 @@ session_destroy();
 }
 ?>
 
-<a href="index.php">Back to main</a>
+<div class=alignText>
+<h4><a href="index.php">Back to main</a></h4>
+</div>
 
-<?php 
-?>
 
 </body>
 </html>

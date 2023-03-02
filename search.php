@@ -51,7 +51,7 @@
             <h6 class="card-title"><?php echo $row["Price"]; ?> kr</h6>
              
              <form method="POST" action="productInfo.php"> 
-                <input type="submit" name="Details">
+                <input type="submit" name="Details" class="btn btn-outline-secondary" value="Details">
                 <input type="hidden" name="id" value="<?php echo $row['ProductID']; ?>"/>
             </form>
         </div>
